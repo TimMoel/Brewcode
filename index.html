@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrewCode - Landing Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body> 
+    <header>
+      <div class="header-box"> <!-- Header Box-->
+        <h1 id="BrewCodeTitle"> <!-- Title-->
+          <a href="https://timmoel.github.io/Brewcode/" class="site-title">
+            BrewC
+            <img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">
+            de
+          </a>
+        </h1>
+        <p id="Sub-Title">Brew Your Perfect Cup</p> <!-- Subtitle-->
+      </div>
+    </header>
+    <main>
+      <div class="coffee-bean-search">
+        <label for="coffeeSearch">Enter Your Coffee Bean Name</label>
+        <input
+          id="coffeeSearch"
+          type="text"
+          placeholder="e.g., Lavazza"
+        />
+        <button id="searchButton">Search</button>
+      </div>
+    </main>
+
+    <script>
+      let coffeeData = [];
+
+      // Load coffee data on page load
+      window.onload = async () => {
+        try {
+          const response = await fetch('data.json'); // Load local JSON file
+          coffeeData = await response.json();
+          console.log('Coffee data loaded:', coffeeData);
+        } catch (error) {
+          console.error('Error loading coffee data:', error);
+        }
+      };
+
+      // Search button event listener
+      document.getElementById('searchButton').addEventListener('click', () => {
+        const searchQuery = document.getElementById('coffeeSearch').value.trim().toLowerCase();
+
+        if (!searchQuery) {
+          alert('Please enter a coffee bean name!');
+          return;
+        }
+
+        // Filter matching beans
+        const matchingBeans = coffeeData.filter(bean =>
+          bean.Bean.toLowerCase().includes(searchQuery)
+        );
+
+        // Store results in local storage
+        localStorage.setItem('searchResults', JSON.stringify(matchingBeans));
+
+        // Redirect to Results Page
+        window.location.href = 'results.html';
+      });
+    </script>
+  </body>
+</html>
