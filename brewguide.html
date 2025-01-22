@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrewCode - Brew Guide</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-box"> <!-- Header Box-->
+        <h1 id="BrewCodeTitle"> <!-- Title-->
+          <a href="/"class="site-title">
+            BrewC
+            <img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">
+            de
+          </a>
+        </h1>
+        <p id="Sub-Title">Brew Your Perfect Cup</p> <!-- Subtitle-->
+      </div>
+    </header>
+    
+    <main>
+      <div id="brewGuide">
+        <h1 id="beanName"></h1>
+        <p id="description"></p>
+        <div id="methods"></div>
+        <div id="methodDetails"></div>
+      </div>
+    </main>
+
+    <script>
+      let coffeeData = [];
+
+      // Load coffee data on page load
+      window.onload = async () => {
+        try {
+          const response = await fetch('data.json'); // Load local JSON file
+          coffeeData = await response.json();
+
+          // Get selected bean from local storage
+          const selectedBeanName = localStorage.getItem('selectedBean');
+          const selectedBean = coffeeData.find(bean => bean.Bean === selectedBeanName);
+
+          if (!selectedBean) {
+            document.getElementById('brewGuide').innerHTML = '<p>Bean not found.</p>';
+            return;
+          }
+
+          // Populate the Brew Guide content
+          document.getElementById('beanName').innerText = selectedBean.Bean;
+          document.getElementById('description').innerText = selectedBean.Description;
+
+          // Display methods as radio buttons
+          const methodsDiv = document.getElementById('methods');
+          methodsDiv.innerHTML = selectedBean.Methods.map(
+            (method, index) => `
+            <label>
+              <input type="radio" name="method" value="${index}" ${index === 0 ? 'checked' : ''}>
+              ${method.Method}
+            </label>
+          `
+          ).join('');
+
+          // Display first method by default
+          displayMethod(selectedBean.Methods[0]);
+
+          // Event listener for changing methods
+          methodsDiv.addEventListener('change', (e) => {
+            const selectedMethodIndex = e.target.value;
+            displayMethod(selectedBean.Methods[selectedMethodIndex]);
+          });
+        } catch (error) {
+          console.error('Error loading coffee data:', error);
+        }
+      };
+
+      // Function to display method details
+      function displayMethod(method) {
+        const methodDetails = `
+          <p><strong>Grind Size:</strong> ${method['Grind Size']}</p>
+          <p><strong>Ratio:</strong> ${method.Ratio}</p>
+          <p><strong>Water Temperature:</strong> ${method['Water Temperature']}°C</p>
+          <p><strong>Blooming Time:</strong> ${method['Blooming Time']}</p>
+          <p><strong>Coffee (g):</strong> ${method['Coffee (g)']}</p>
+          <p><strong>Water (ml):</strong> ${method['Water (ml)']}</p>
+          <p><strong>Instructions:</strong> ${method.Instructions}</p>
+        `;
+        document.getElementById('methodDetails').innerHTML = methodDetails;
+      }
+    </script>
+  </body>
+</html>

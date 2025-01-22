@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrewCode - Results</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-box"> <!-- Header Box-->
+        <h1 id="BrewCodeTitle"> <!-- Title-->
+          <a href="/Brewcode/" class="site-title">
+            BrewC
+            <img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">
+            de
+          </a>
+        </h1>
+        <p id="Sub-Title">Brew Your Perfect Cup</p> <!-- Subtitle-->
+      </div>
+    </header>
+    
+    
+    <main>
+      <h2 id="SearchResultsTitle"> Search Results:</h2>
+      <div id="results"></div>
+    </main>
+
+    <script>
+      // Load search results from local storage
+      const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
+
+      // Display results
+      const resultsDiv = document.getElementById('results');
+      if (searchResults.length === 0) {
+        resultsDiv.innerHTML = '<p>No matching beans found. Please try again.</p>';
+      } else {
+        resultsDiv.innerHTML = searchResults
+          .map(
+            bean => `
+            <div class="result-item" onclick="goToBrewGuide('${bean.Bean}')">
+              <h3>${bean.Bean}</h3>
+              <p>${bean.Description}</p>
+            </div>
+          `
+          )
+          .join('');
+      }
+
+      // Redirect to Brew Guide Page
+      function goToBrewGuide(beanName) {
+        localStorage.setItem('selectedBean', beanName);
+        window.location.href = 'brewguide.html';
+      }
+    </script>
+  </body>
+</html>
