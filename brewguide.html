@@ -57,10 +57,19 @@
         <!-- Brewing Methods Container -->
         <div id="methods-container">
           <!-- Toggle Buttons for Methods -->
-          <div id="methods"></div>
-          <!-- Dropdown for Methods -->
-          <select id="methods-dropdown" style="display: none;"></select>
+          <div id="methods">
+            <input type="radio" id="method1" name="method" value="method1">
+            <label for="method1">Method 1</label>
+            <input type="radio" id="method2" name="method" value="method2">
+            <label for="method2">Method 2</label>
+            <!-- Add more radio buttons as needed -->
         </div>
+        
+        <select id="methods-dropdown">
+            <option value="method1">Method 1</option>
+            <option value="method2">Method 2</option>
+            <!-- Add more options as needed -->
+        </select>
 
         <!-- Grinder Selection Section -->
         <div id="grinderSection">
