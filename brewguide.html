@@ -7,24 +7,45 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <header>
-      <div class="header-box"> <!-- Header Box-->
-        <h1 id="BrewCodeTitle"> <!-- Title-->
+      <div class="header-box">
+        <!-- Header Box-->
+        <h1 id="BrewCodeTitle">
+          <!-- Title-->
           <a href="https://timmoel.github.io/Brewcode/" class="site-title">
             BrewC
-            <img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">
+            <img
+              src="https://static.thenounproject.com/png/120176-200.png"
+              alt="Coffee Icon"
+              class="icon"
+            />
             de
           </a>
         </h1>
-        <p id="Sub-Title">Brew Your Perfect Cup</p> <!-- Subtitle-->
+        <p id="Sub-Title">Brew Your Perfect Cup</p>
+        <!-- Subtitle-->
       </div>
     </header>
+
     <main>
       <div id="brewGuide">
         <h1 id="beanName"></h1>
         <p id="description"></p>
+
+        <!-- Brewing Methods -->
         <div id="methods"></div>
+
+        <!-- Grinder Selection -->
+        <div id="grinderSection">
+          <label for="grinder-select">Select Your Grinder:</label>
+          <select id="grinder-select">
+            <option value="default">Choose Grinder</option>
+            <option value="df54">DF54</option>
+            <option value="chestnut-c2">Chestnut C2</option>
+          </select>
+        </div>
+
+        <!-- Brewing Method Details -->
         <div id="methodDetails"></div>
       </div>
     </main>
@@ -35,58 +56,90 @@
       // Load coffee data on page load
       window.onload = async () => {
         try {
-          const response = await fetch('data.json'); // Load local JSON file
+          const response = await fetch("data.json"); // Load local JSON file
           coffeeData = await response.json();
 
           // Get selected bean from local storage
-          const selectedBeanName = localStorage.getItem('selectedBean');
-          const selectedBean = coffeeData.find(bean => bean.Bean === selectedBeanName);
+          const selectedBeanName = localStorage.getItem("selectedBean");
+          const selectedBean = coffeeData.find(
+            (bean) => bean.Bean === selectedBeanName
+          );
 
           if (!selectedBean) {
-            document.getElementById('brewGuide').innerHTML = '<p>Bean not found.</p>';
+            document.getElementById("brewGuide").innerHTML =
+              "<p>Bean not found.</p>";
             return;
           }
 
           // Populate the Brew Guide content
-          document.getElementById('beanName').innerText = selectedBean.Bean;
-          document.getElementById('description').innerText = selectedBean.Description;
+          document.getElementById("beanName").innerText = selectedBean.Bean;
+          document.getElementById("description").innerText =
+            selectedBean.Description;
 
           // Display methods as radio buttons
-          const methodsDiv = document.getElementById('methods');
+          const methodsDiv = document.getElementById("methods");
           methodsDiv.innerHTML = selectedBean.Methods.map(
             (method, index) => `
-            <label>
-              <input type="radio" name="method" value="${index}" ${index === 0 ? 'checked' : ''}>
-              ${method.Method}
-            </label>
-          `
-          ).join('');
+              <label>
+                <input type="radio" name="method" value="${index}" ${
+              index === 0 ? "checked" : ""
+            }>
+                ${method.Method}
+              </label>
+            `
+          ).join("");
 
           // Display first method by default
           displayMethod(selectedBean.Methods[0]);
 
           // Event listener for changing methods
-          methodsDiv.addEventListener('change', (e) => {
+          methodsDiv.addEventListener("change", (e) => {
             const selectedMethodIndex = e.target.value;
             displayMethod(selectedBean.Methods[selectedMethodIndex]);
           });
         } catch (error) {
-          console.error('Error loading coffee data:', error);
+          console.error("Error loading coffee data:", error);
         }
       };
 
       // Function to display method details
       function displayMethod(method) {
         const methodDetails = `
-          <p><strong>Grind Size:</strong> ${method['Grind Size']}</p>
+          <p><strong>Grind Size:</strong> ${method["Grind Size"]}</p>
           <p><strong>Ratio:</strong> ${method.Ratio}</p>
-          <p><strong>Water Temperature:</strong> ${method['Water Temperature']}°C</p>
-          <p><strong>Blooming Time:</strong> ${method['Blooming Time']}</p>
-          <p><strong>Coffee (g):</strong> ${method['Coffee (g)']}</p>
-          <p><strong>Water (ml):</strong> ${method['Water (ml)']}</p>
+          <p><strong>Water Temperature:</strong> ${method["Water Temperature"]}°C</p>
+          <p><strong>Blooming Time:</strong> ${method["Blooming Time"]}</p>
+          <p><strong>Coffee (g):</strong> ${method["Coffee (g)"]}</p>
+          <p><strong>Water (ml):</strong> ${method["Water (ml)"]}</p>
           <p><strong>Instructions:</strong> ${method.Instructions}</p>
         `;
-        document.getElementById('methodDetails').innerHTML = methodDetails;
+        document.getElementById("methodDetails").innerHTML = methodDetails;
+
+        // Add grinder selection logic
+        const grinderSelect = document.getElementById("grinder-select");
+        const grindSizeValue = document.querySelector(
+          "#methodDetails p strong"
+        ).nextSibling;
+
+        // Reset grinder selection on method change
+        grinderSelect.value = "default";
+        grindSizeValue.textContent = ` ${method["Grind Size"]}`;
+
+        // Listen for grinder selection changes
+        grinderSelect.addEventListener("change", function () {
+          const selectedGrinder = this.value;
+
+          // Define grind sizes for each grinder (this can be extended)
+          const grinderSettings = {
+            df54: method["Grinder Settings"]?.df54 || "Unavailable",
+            "chestnut-c2":
+              method["Grinder Settings"]?.["chestnut-c2"] || "Unavailable",
+          };
+
+          const newGrindSize =
+            grinderSettings[selectedGrinder] || method["Grind Size"]; // Fallback to default grind size
+          grindSizeValue.textContent = ` ${newGrindSize}`;
+        });
       }
     </script>
   </body>
