@@ -5,13 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrewCode - Brew Guide</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Add your existing CSS here */
+      
+      /* Media query to switch between methods toggle buttons and dropdown */
+      @media (max-width: 600px) {
+        #methods {
+          display: none;
+        }
+        #methods-dropdown {
+          display: block;
+        }
+      }
+      @media (min-width: 601px) {
+        #methods {
+          display: block;
+        }
+        #methods-dropdown {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
       <div class="header-box">
-        <!-- Header Box-->
+        <!-- Header Box -->
         <h1 id="BrewCodeTitle">
-          <!-- Title-->
+          <!-- Title -->
           <a href="https://timmoel.github.io/Brewcode/" class="site-title">
             BrewC
             <img
@@ -23,19 +44,25 @@
           </a>
         </h1>
         <p id="Sub-Title">Brew Your Perfect Cup</p>
-        <!-- Subtitle-->
+        <!-- Subtitle -->
       </div>
     </header>
 
     <main>
       <div id="brewGuide">
+        <!-- Bean Name and Description -->
         <h1 id="beanName"></h1>
         <p id="description"></p>
 
-        <!-- Brewing Methods -->
-        <div id="methods"></div>
+        <!-- Brewing Methods Container -->
+        <div id="methods-container">
+          <!-- Toggle Buttons for Methods -->
+          <div id="methods"></div>
+          <!-- Dropdown for Methods -->
+          <select id="methods-dropdown" style="display: none;"></select>
+        </div>
 
-        <!-- Grinder Selection -->
+        <!-- Grinder Selection Section -->
         <div id="grinderSection">
           <label for="grinder-select">Select Your Grinder:</label>
           <select id="grinder-select">
@@ -53,7 +80,7 @@
     <script>
       let coffeeData = [];
 
-      // Load coffee data on page load
+      // Load coffee data and populate methods on page load
       window.onload = async () => {
         try {
           const response = await fetch("data.json"); // Load local JSON file
@@ -76,33 +103,59 @@
           document.getElementById("description").innerText =
             selectedBean.Description;
 
-          // Display methods as radio buttons
-          const methodsDiv = document.getElementById("methods");
-          methodsDiv.innerHTML = selectedBean.Methods.map(
-            (method, index) => `
-              <label>
-                <input type="radio" name="method" value="${index}" ${
-              index === 0 ? "checked" : ""
-            }>
-                ${method.Method}
-              </label>
-            `
-          ).join("");
+          // Populate both methods toggle buttons and dropdown
+          populateMethods(selectedBean.Methods);
 
           // Display first method by default
           displayMethod(selectedBean.Methods[0]);
-
-          // Event listener for changing methods
-          methodsDiv.addEventListener("change", (e) => {
-            const selectedMethodIndex = e.target.value;
-            displayMethod(selectedBean.Methods[selectedMethodIndex]);
-          });
         } catch (error) {
           console.error("Error loading coffee data:", error);
         }
       };
 
-      // Function to display method details
+      // Populate the methods toggle buttons and dropdown
+      function populateMethods(methods) {
+        const methodsDiv = document.getElementById("methods");
+        const methodsDropdown = document.getElementById("methods-dropdown");
+
+        // Populate toggle buttons
+        methodsDiv.innerHTML = methods
+          .map(
+            (method, index) => `
+            <label>
+              <input type="radio" name="method" value="${index}" ${
+              index === 0 ? "checked" : ""
+            }>
+              ${method.Method}
+            </label>
+          `
+          )
+          .join("");
+
+        // Populate dropdown
+        methodsDropdown.innerHTML = methods
+          .map(
+            (method, index) => `
+            <option value="${index}" ${index === 0 ? "selected" : ""}>
+              ${method.Method}
+            </option>
+          `
+          )
+          .join("");
+
+        // Event listener for the dropdown
+        methodsDropdown.addEventListener("change", (e) => {
+          const selectedMethodIndex = e.target.value;
+          displayMethod(methods[selectedMethodIndex]);
+        });
+
+        // Event listener for radio buttons
+        methodsDiv.addEventListener("change", (e) => {
+          const selectedMethodIndex = e.target.value;
+          displayMethod(methods[selectedMethodIndex]);
+        });
+      }
+      // Display the selected brewing method details
       function displayMethod(method) {
         const methodDetails = `
           <p><strong>Grind Size:</strong> ${method["Grind Size"]}</p>
@@ -115,13 +168,13 @@
         `;
         document.getElementById("methodDetails").innerHTML = methodDetails;
 
-        // Add grinder selection logic
+        // Grinder selection logic
         const grinderSelect = document.getElementById("grinder-select");
         const grindSizeValue = document.querySelector(
           "#methodDetails p strong"
         ).nextSibling;
 
-        // Reset grinder selection on method change
+        // Reset grinder selection
         grinderSelect.value = "default";
         grindSizeValue.textContent = ` ${method["Grind Size"]}`;
 
@@ -129,15 +182,16 @@
         grinderSelect.addEventListener("change", function () {
           const selectedGrinder = this.value;
 
-          // Define grind sizes for each grinder (this can be extended)
+          // Grinder-specific settings
           const grinderSettings = {
             df54: method["Grinder Settings"]?.df54 || "Unavailable",
             "chestnut-c2":
               method["Grinder Settings"]?.["chestnut-c2"] || "Unavailable",
           };
 
+          // Update grind size
           const newGrindSize =
-            grinderSettings[selectedGrinder] || method["Grind Size"]; // Fallback to default grind size
+            grinderSettings[selectedGrinder] || method["Grind Size"];
           grindSizeValue.textContent = ` ${newGrindSize}`;
         });
       }

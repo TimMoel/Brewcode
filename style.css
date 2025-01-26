@@ -1,4 +1,6 @@
-/* Landing Page */
+/* ---------- General Styles ---------- */
+
+/* Header Styling */
 header {
     display: flex;
     justify-content: center; /* Centers content horizontally */
@@ -10,6 +12,7 @@ header {
     margin-bottom: 5vh; /* Add space below the header */
 }
 
+/* BrewCode Title Styling */
 #BrewCodeTitle {
     font-size: 2rem; /* Set the font size */
     text-align: center; /* Center-align the title */
@@ -23,17 +26,17 @@ header {
     color: rgb(0, 0, 0); /* Ensure the link text is black */
     text-decoration: none; /* Remove underline */
     cursor: pointer; /* Change cursor to pointer on hover */
-    pointer-events: auto; /* Ensure link is clickable */
 }
 
-.site-title:visited, 
-.site-title:link, 
-.site-title:hover, 
+.site-title:visited,
+.site-title:link,
+.site-title:hover,
 .site-title:active {
     color: rgb(0, 0, 0); /* Keep link black in all states */
     text-decoration: none; /* Remove underline in all states */
 }
 
+/* Icon Styling */
 #BrewCodeTitle .icon {
     height: 1.3rem; /* Set icon size */
     width: auto; /* Maintain aspect ratio */
@@ -41,15 +44,16 @@ header {
     margin: -10px; /* Add slight spacing around the icon */
 }
 
+/* Subtitle Styling */
 #Sub-Title {
     margin: auto;
     text-align: center; /* Center-align the subtitle */
     color: white; /* Set subtitle color to white */
 }
 
+/* ---------- Coffee Bean Search Styles ---------- */
 
-
-.coffee-bean-search  {
+.coffee-bean-search {
     text-align: center;
 }
 
@@ -57,8 +61,7 @@ header {
     display: block; /* Make the label take a full line */
     margin-bottom: 10px; /* Add some space below the label */
     font-size: 14px; /* Adjust font size for better readability */
-  }
-
+}
 
 #coffeeSearch {
     width: 60vw;
@@ -70,29 +73,24 @@ header {
     height: 30px;
 }
 
-/* Results Page */
+/* ---------- Results Page Styles ---------- */
 
 #SearchResultsTitle {
     text-decoration: underline;
 }
-
 
 #results div {
     padding: 10px;
     border: 1px solid #ccc;
     margin: 5px;
     cursor: pointer;
-  }
-  
-  #results div:hover {
+}
+
+#results div:hover {
     background-color: #f0f0f0;
-  }
-  
+}
 
-
-
-
-/* Brew Guide */
+/* ---------- Brew Guide Styles ---------- */
 
 /* Main container for the brew guide */
 #brewGuide {
@@ -117,7 +115,9 @@ header {
     text-align: left;
 }
 
-/* Methods selection */
+/* ---------- Brewing Methods Styles ---------- */
+
+/* Toggle buttons for larger screens */
 #methods {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -137,7 +137,20 @@ header {
     cursor: pointer;
 }
 
-/* Method details */
+/* Dropdown for smaller screens */
+#methods-dropdown {
+    display: none; /* Hidden by default */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* ---------- Method Details ---------- */
+
 #methodDetails {
     display: grid; /* Enable grid layout */
     grid-template-columns: 1fr 1fr; /* Two columns for main details */
@@ -168,32 +181,56 @@ header {
     margin-top: 15px; /* Add spacing above instructions */
 }
 
-#methodDetails h3 {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-#methodDetails ol {
-    margin: 0;
-    padding-left: 20px;
-}
-
-#methodDetailsli {
-    margin-bottom: 8px;
-}
+/* ---------- Grinder Section ---------- */
 
 #grinderSection {
-    margin-top: 10px; /* Space above the section */
+    margin-top: 0px; /* Space above the section */
     padding: 10px; /* Inner spacing */
     border: 1px solid #ddd; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 8px; /* Rounded corners */
     background-color: #f9f9f9; /* Light gray background */
-  }
-  
-  #grinder-select {
+}
+
+#grinder-select {
     margin-top: 5px;
     padding: 5px;
     font-size: 1rem;
     width: 100%;
-  }
-  
+}
+
+/* ---------- Brewing Methods Styles ---------- */
+
+/* Toggle buttons for larger screens */
+
+#methods input[type="radio"] {
+    margin-right: 8px;
+}
+
+#methods label {
+    margin: 0 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Dropdown for smaller screens */
+#methods-dropdown {
+    display: none; /* Hidden by default */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* Responsive Behavior: Switch to dropdown on narrow screens */
+@media (max-width: 768px) {
+    #methods {
+        display: none; /* Hide toggle buttons */
+    }
+
+    #methods-dropdown {
+        display: block; /* Show dropdown */
+    }
+}
