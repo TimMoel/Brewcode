@@ -114,7 +114,6 @@ header {
     margin-bottom: 20px;
     text-align: left;
 }
-
 /* ---------- Brewing Methods Section ---------- */
 #methodSelectionSection {
     margin-top: 20px; /* Space above the section */
@@ -125,100 +124,94 @@ header {
 }
 
 #methodSelectionSection .section-label {
-    margin-bottom: 10px; /* Space below the label */
-    font-size: 16px; /* Font size for the label */
-    font-weight: bold; /* Bold text */
+    margin-bottom: 5px; /* Space below the label for better readability */
+    font-size: 16px; /* Consistent font size for labels */
     color: #333; /* Dark gray for readability */
-    display: block; /* Block-level element */
+    display: block; /* Ensures the label takes the full width */
 }
 
-/* Toggle buttons for larger screens */
+/* ---------- Toggle Buttons for Larger Screens ---------- */
 #methods {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
-    text-align: center;
+    border: 1px solid #ccc; /* Matches general styling */
+    border-radius: 8px; /* Rounded corners for consistency */
+    padding: 10px; /* Padding for spacing */
+    margin-bottom: 0; /* Space below the toggle buttons */
+    background-color: #fff; /* White background to distinguish the section */
+    text-align: center; /* Centers the toggle buttons */
 }
 
 #methods input[type="radio"] {
-    margin-right: 8px;
+    margin-right: 5px; /* Reduce spacing for a compact look */
+    transform: scale(0.9); /* Slightly smaller radio buttons */
 }
 
 #methods label {
-    margin: 0 15px;
-    font-weight: bold;
-    cursor: pointer;
+    margin: 0 10px; /* Adjust spacing between labels */
+    font-size: 14px; /* Slightly smaller font size for balance */
+    font-weight: normal; /* Emphasize the labels */
+    cursor: pointer; /* Indicates clickability */
 }
 
-/* Dropdown for smaller screens */
+/* ---------- Dropdown for Smaller Screens ---------- */
 #methods-dropdown {
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width */
-    padding: 10px; /* Same padding as toggle buttons */
-    border: 1px solid #ccc; /* Same border style */
-    border-radius: 8px; /* Same rounded corners */
-    background-color: #f9f9f9; /* Same background color */
-    font-size: 1rem; /* Consistent font size */
-    margin-bottom: 20px; /* Same margin as toggle buttons */
-    text-align: center; /* Center-align the dropdown text */
+    display: none; /* Hidden by default unless on smaller screens */
+    width: 100%; /* Takes full width for usability */
+    padding: 10px; /* Inner spacing for dropdown */
+    border: 1px solid #ccc; /* Matches styling of other sections */
+    border-radius: 8px; /* Rounded corners for consistency */
+    background-color: #fff; /* White background for clarity */
+    font-size: 14px; /* Same font size as toggle buttons */
+    margin-bottom: 0px; /* Space below the dropdown */
+    text-align: center; /* Center-aligns dropdown text */
 }
 
+/* ---------- Method Instructions Section ---------- */
 #methodDetails {
-    display: grid; /* Enable grid layout */
-    grid-template-columns: 1fr 1fr; /* Two columns for main details */
-    gap: 15px; /* Add spacing between columns */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-top: 20px;
+    display: grid; /* Creates a grid layout for details */
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 15px; /* Adds spacing between columns */
+    border: 1px solid #ccc; /* Matches other sections */
+    border-radius: 8px; /* Rounded corners for consistency */
+    padding: 20px; /* Inner spacing for the section */
+    background-color: #f9f9f9; /* Light gray background */
+    font-size: 14px; /* Consistent font size */
+    font-weight: normal;
+    line-height: 1.6; /* Improves text readability */
+    margin-top: 20px; /* Space above the section */
 }
 
 #methodDetails p {
-    margin: 0; /* Remove default margins */
+    margin: 0; /* Removes default paragraph margins */
 }
 
 #methodDetails p strong {
-    display: block; /* Make labels appear on their own line */
-    font-weight: normal; /* Change text weight to normal */
-    margin-bottom: 5px; /* Add spacing after labels */
+    display: block; /* Labels appear on their own line */
+    font-weight: bold; /* Bold font weight for labels */
+    margin-bottom: 5px; /* Space after labels */
 }
 
 #methodDetails p:last-child {
-    grid-column: 1 / -1; /* Span across all columns */
-    margin-top: 15px; /* Add spacing above instructions */
+    grid-column: 1 / -1; /* Makes the last item span the full width */
+    margin-top: 15px; /* Adds spacing above the last item */
 }
 
-/* Dropdown for methods */
-#methods-dropdown {
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width */
-    padding: 10px; /* Padding for dropdown */
-    border: 1px solid #ccc; /* Border to match other sections */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #fff; /* Set background to white */
-    font-size: 1rem; /* Font size for readability */
-    margin-bottom: 20px; /* Space below dropdown */
-    text-align: center; /* Center-align the dropdown text */
-}
 /* ---------- Grinder Section ---------- */
 #grinderSection {
     margin-top: 20px; /* Space above the section */
     padding: 10px; /* Inner spacing */
     border: 1px solid #ddd; /* Light gray border */
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px; /* Rounded corners for consistency */
     background-color: #f9f9f9; /* Light gray background */
 }
 
 #grinder-select {
-    margin-top: 5px;
-    padding: 5px;
-    font-size: 1rem;
-    width: 100%;
+    margin-top: 5px; /* Space above the dropdown */
+    padding: 10px; /* Padding for better usability */
+    font-size: 14px; /* Consistent font size */
+    border: 1px solid #ccc; /* Matches styling of other sections */
+    border-radius: 8px; /* Rounded corners for consistency */
+    width: 100%; /* Full width for usability */
+    background-color: #fff; /* White background for clarity */
 }
 
 /* ---------- Responsive Behavior ---------- */

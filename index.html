@@ -3,96 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BrewCode - Brew Guide</title>
+    <title>BrewCode - Landing Page</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Add your existing CSS here */
-
-      /* Media query to switch between methods toggle buttons and dropdown */
-      @media (max-width: 600px) {
-        #methods {
-          display: none;
-        }
-        #methods-dropdown {
-          display: block;
-        }
-      }
-      @media (min-width: 601px) {
-        #methods {
-          display: block;
-        }
-        #methods-dropdown {
-          display: none;
-        }
-      }
-    </style>
   </head>
-  <body>
+  <body> 
     <header>
-      <div class="header-box">
-        <!-- Header Box -->
-        <h1 id="BrewCodeTitle">
-          <!-- Title -->
+      <div class="header-box"> <!-- Header Box-->
+        <h1 id="BrewCodeTitle"> <!-- Title-->
           <a href="https://timmoel.github.io/Brewcode/" class="site-title">
             BrewC
-            <img
-              src="https://static.thenounproject.com/png/120176-200.png"
-              alt="Coffee Icon"
-              class="icon"
-            />
+            <img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">
             de
           </a>
         </h1>
-        <p id="Sub-Title">Brew Your Perfect Cup</p>
-        <!-- Subtitle -->
+        <p id="Sub-Title">Brew Your Perfect Cup</p> <!-- Subtitle-->
       </div>
     </header>
-
+    
     <main>
-      <div id="brewGuide">
-        <!-- Bean Name and Description -->
-        <h1 id="beanName"></h1>
-        <p id="description"></p>
-
-        <!-- Brewing Methods Container -->
-        <div id="methods-container">
-          <!-- Text Above Method Selection -->
-          <label for="methods-dropdown" class="method-label">Select Brewing Method:</label>
-
-          <!-- Toggle Buttons for Methods -->
-          <div id="methods">
-            <input type="radio" id="method1" name="method" value="method1">
-            <label for="method1">Method 1</label>
-            <input type="radio" id="method2" name="method" value="method2">
-            <label for="method2">Method 2</label>
-            <!-- Add more radio buttons as needed -->
-          </div>
-          
-          <!-- Dropdown for Smaller Screens -->
-          <select id="methods-dropdown">
-            <option value="method1">Method 1</option>
-            <option value="method2">Method 2</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-
-        <!-- Grinder Selection Section -->
-        <div id="grinderSection">
-          <label for="grinder-select">Select Your Grinder:</label>
-          <select id="grinder-select">
-            <option value="default">Choose Grinder</option>
-            <option value="df54">DF54</option>
-            <option value="chestnut-c2">Chestnut C2</option>
-          </select>
-        </div>
-
-        <!-- Brewing Method Details -->
-        <div id="methodDetails"></div>
+      <div class="coffee-bean-search">
+        <label for="coffeeSearch">Enter Your Coffee Bean Name</label>
+        <input
+          id="coffeeSearch"
+          type="text"
+          placeholder="e.g., Lavazza"
+        />
+        <button id="searchButton">Search</button>
       </div>
     </main>
 
     <script>
-      // Your JavaScript remains unchanged
+      let coffeeData = [];
+
+      // Load coffee data on page load
+      window.onload = async () => {
+        try {
+          const response = await fetch('data.json'); // Load local JSON file
+          coffeeData = await response.json();
+          console.log('Coffee data loaded:', coffeeData);
+        } catch (error) {
+          console.error('Error loading coffee data:', error);
+        }
+      };
+
+      // Search button event listener
+      document.getElementById('searchButton').addEventListener('click', () => {
+        const searchQuery = document.getElementById('coffeeSearch').value.trim().toLowerCase();
+
+        if (!searchQuery) {
+          alert('Please enter a coffee bean name!');
+          return;
+        }
+
+        // Filter matching beans
+        const matchingBeans = coffeeData.filter(bean =>
+          bean.Bean.toLowerCase().includes(searchQuery)
+        );
+
+        // Store results in local storage
+        localStorage.setItem('searchResults', JSON.stringify(matchingBeans));
+
+        // Redirect to Results Page
+        window.location.href = 'results.html';
+      });
     </script>
   </body>
 </html>
