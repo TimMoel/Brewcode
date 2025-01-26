@@ -1,193 +1,256 @@
 [
-    {
-      "Bean": "Lavazza",
-      "Description": "A classic Italian coffee known for its rich flavor and smooth texture.",
-      "Methods": [
-        {
-          "Method": "AeroPress",
-          "Grind Size": "Fine",
-          "Ratio": "1:6",
-          "Water Temperature": "85°C",
-          "Blooming Time": "30s",
-          "Coffee (g)": 1,
-          "Water (ml)": 6,
-          "Instructions": "Add coffee to the AeroPress, bloom for 30 seconds, then press slowly."
-        },
-        {
-          "Method": "Moka Pot",
-          "Grind Size": "Medium",
-          "Ratio": "1:8",
-          "Water Temperature": "90°C",
-          "Blooming Time": "N/A",
-          "Coffee (g)": 15,
-          "Water (ml)": 120,
-          "Instructions": "Add water to the base, coffee to the basket, and heat until brewed."
-        },
-        {
-          "Method": "Cafetiere",
-          "Grind Size": "Coarse",
-          "Ratio": "1:12",
-          "Water Temperature": "95°C",
-          "Blooming Time": "1 min",
-          "Coffee (g)": 20,
-          "Water (ml)": 240,
-          "Instructions": "Combine coffee and water, steep for 4 minutes, then press gently."
-        },
-        {
-          "Method": "Filter Coffee",
-          "Grind Size": "Medium Coarse",
-          "Ratio": "1:16",
-          "Water Temperature": "92°C",
-          "Blooming Time": "45s",
-          "Coffee (g)": 20,
-          "Water (ml)": 320,
-          "Instructions": "Pour water over the coffee in stages, aiming for a total brew time of 3 minutes."
+  {
+    "Bean": "Lavazza",
+    "Description": "A classic Italian coffee known for its rich flavor and smooth texture.",
+    "Methods": [
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:6",
+        "Water Temperature": 85,
+        "Blooming Time": "30s",
+        "Coffee (g)": 1,
+        "Water (ml)": 6,
+        "Instructions": "Add coffee to the AeroPress, bloom for 30 seconds, then press slowly.",
+        "Grinder Settings": {
+          "df54": "20",
+          "chestnut-c2": "19 clicks"
         }
-      ]
-    },
-    {
-      "Bean": "Lavazza Oro",
-      "Description": "An aromatic blend with floral and fruit notes, offering a premium coffee experience.",
-      "Methods": [
-        {
-          "Method": "AeroPress",
-          "Grind Size": "Fine",
-          "Ratio": "1:7",
-          "Water Temperature": "85°C",
-          "Blooming Time": "25s",
-          "Coffee (g)": 16,
-          "Water (ml)": 112,
-          "Instructions": "Add coffee, bloom for 25 seconds, then press gently for a smooth brew."
-        },
-        {
-          "Method": "Moka Pot",
-          "Grind Size": "Medium",
-          "Ratio": "1:9",
-          "Water Temperature": "88°C",
-          "Blooming Time": "N/A",
-          "Coffee (g)": 20,
-          "Water (ml)": 180,
-          "Instructions": "Fill the Moka pot, heat until brewed, and enjoy a full-bodied flavor."
-        },
-        {
-          "Method": "Filter Coffee",
-          "Grind Size": "Medium Coarse",
-          "Ratio": "1:16",
-          "Water Temperature": "92°C",
-          "Blooming Time": "30s",
-          "Coffee (g)": 22,
-          "Water (ml)": 352,
-          "Instructions": "Slowly pour water in stages for an even extraction and balanced taste."
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:8",
+        "Water Temperature": 90,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 15,
+        "Water (ml)": 120,
+        "Instructions": "Add water to the base, coffee to the basket, and heat until brewed.",
+        "Grinder Settings": {
+          "df54": "18",
+          "chestnut-c2": "17 clicks"
         }
-      ]
-    },
-    {
-      "Bean": "Lavazza Espresso",
-      "Description": "A strong and robust coffee blend perfect for traditional espresso brewing.",
-      "Methods": [
-        {
-          "Method": "Espresso Machine",
-          "Grind Size": "Fine",
-          "Ratio": "1:2",
-          "Water Temperature": "94°C",
-          "Blooming Time": "N/A",
-          "Coffee (g)": 18,
-          "Water (ml)": 36,
-          "Instructions": "Tamp coffee into the portafilter, brew for 25-30 seconds for a rich espresso shot."
-        },
-        {
-          "Method": "AeroPress",
-          "Grind Size": "Fine",
-          "Ratio": "1:5",
-          "Water Temperature": "85°C",
-          "Blooming Time": "20s",
-          "Coffee (g)": 12,
-          "Water (ml)": 60,
-          "Instructions": "Bloom for 20 seconds, then press gently to replicate an espresso-style brew."
-        },
-        {
-          "Method": "Filter Coffee",
-          "Grind Size": "Medium",
-          "Ratio": "1:15",
-          "Water Temperature": "90°C",
-          "Blooming Time": "40s",
-          "Coffee (g)": 18,
-          "Water (ml)": 270,
-          "Instructions": "Pour water slowly over coffee for a lighter, espresso-inspired drink."
+      },
+      {
+        "Method": "Cafetiere",
+        "Grind Size": "Coarse",
+        "Ratio": "1:12",
+        "Water Temperature": 95,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 20,
+        "Water (ml)": 240,
+        "Instructions": "Combine coffee and water, steep for 4 minutes, then press gently.",
+        "Grinder Settings": {
+          "df54": "25",
+          "chestnut-c2": "23 clicks"
         }
-      ]
-    },
-    {
-      "Bean": "Starbucks Espresso Roast",
-      "Description": "A dark roast for bold espresso lovers with rich caramel notes.",
-      "Methods": [
-        {
-          "Method": "AeroPress",
-          "Grind Size": "Fine",
-          "Ratio": "1:7",
-          "Water Temperature": "85°C",
-          "Blooming Time": "30s",
-          "Coffee (g)": 18,
-          "Water (ml)": 126,
-          "Instructions": "Add coffee, bloom for 30 seconds, then press gently for 1 minute."
-        },
-        {
-          "Method": "French Press",
-          "Grind Size": "Coarse",
-          "Ratio": "1:12",
-          "Water Temperature": "92°C",
-          "Blooming Time": "1 min",
-          "Coffee (g)": 24,
-          "Water (ml)": 360,
-          "Instructions": "Combine coffee and water, steep for 4 minutes, then press slowly."
-        },
-        {
-          "Method": "Filter Coffee",
-          "Grind Size": "Medium",
-          "Ratio": "1:15",
-          "Water Temperature": "90°C",
-          "Blooming Time": "45s",
-          "Coffee (g)": 20,
-          "Water (ml)": 300,
-          "Instructions": "Pour water in a circular motion, aiming for a total brew time of 4 minutes."
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium Coarse",
+        "Ratio": "1:16",
+        "Water Temperature": 92,
+        "Blooming Time": "45s",
+        "Coffee (g)": 20,
+        "Water (ml)": 320,
+        "Instructions": "Pour water over the coffee in stages, aiming for a total brew time of 3 minutes.",
+        "Grinder Settings": {
+          "df54": "22",
+          "chestnut-c2": "20 clicks"
         }
-      ]
-    },
-    {
-      "Bean": "Costa Coffee Barista Blend",
-      "Description": "A medium roast with hints of chocolate and nuts, perfect for any brewing method.",
-      "Methods": [
-        {
-          "Method": "Cafetiere",
-          "Grind Size": "Coarse",
-          "Ratio": "1:14",
-          "Water Temperature": "94°C",
-          "Blooming Time": "1 min",
-          "Coffee (g)": 25,
-          "Water (ml)": 350,
-          "Instructions": "Combine coffee and water, steep for 4 minutes, then press slowly."
-        },
-        {
-          "Method": "Moka Pot",
-          "Grind Size": "Medium",
-          "Ratio": "1:8",
-          "Water Temperature": "90°C",
-          "Blooming Time": "N/A",
-          "Coffee (g)": 18,
-          "Water (ml)": 144,
-          "Instructions": "Fill the Moka pot, heat until coffee brews into the top chamber, and serve."
-        },
-        {
-          "Method": "Filter Coffee",
-          "Grind Size": "Medium Coarse",
-          "Ratio": "1:16",
-          "Water Temperature": "92°C",
-          "Blooming Time": "50s",
-          "Coffee (g)": 22,
-          "Water (ml)": 352,
-          "Instructions": "Pour water in stages, ensuring even saturation for a balanced brew."
+      }
+    ]
+  },
+  {
+    "Bean": "Lavazza Oro",
+    "Description": "An aromatic blend with floral and fruit notes, offering a premium coffee experience.",
+    "Methods": [
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:7",
+        "Water Temperature": 85,
+        "Blooming Time": "25s",
+        "Coffee (g)": 16,
+        "Water (ml)": 112,
+        "Instructions": "Add coffee, bloom for 25 seconds, then press gently for a smooth brew.",
+        "Grinder Settings": {
+          "df54": "20",
+          "chestnut-c2": "19 clicks"
         }
-      ]
-    }
-  ]
-  
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:9",
+        "Water Temperature": 88,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 20,
+        "Water (ml)": 180,
+        "Instructions": "Fill the Moka pot, heat until brewed, and enjoy a full-bodied flavor.",
+        "Grinder Settings": {
+          "df54": "18",
+          "chestnut-c2": "17 clicks"
+        }
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium Coarse",
+        "Ratio": "1:16",
+        "Water Temperature": 92,
+        "Blooming Time": "30s",
+        "Coffee (g)": 22,
+        "Water (ml)": 352,
+        "Instructions": "Slowly pour water in stages for an even extraction and balanced taste.",
+        "Grinder Settings": {
+          "df54": "22",
+          "chestnut-c2": "20 clicks"
+        }
+      }
+    ]
+  },
+  {
+    "Bean": "Lavazza Espresso",
+    "Description": "A strong and robust coffee blend perfect for traditional espresso brewing.",
+    "Methods": [
+      {
+        "Method": "Espresso Machine",
+        "Grind Size": "Fine",
+        "Ratio": "1:2",
+        "Water Temperature": 94,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 18,
+        "Water (ml)": 36,
+        "Instructions": "Tamp coffee into the portafilter, brew for 25-30 seconds for a rich espresso shot.",
+        "Grinder Settings": {
+          "df54": "10",
+          "chestnut-c2": "8 clicks"
+        }
+      },
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:5",
+        "Water Temperature": 85,
+        "Blooming Time": "20s",
+        "Coffee (g)": 12,
+        "Water (ml)": 60,
+        "Instructions": "Bloom for 20 seconds, then press gently to replicate an espresso-style brew.",
+        "Grinder Settings": {
+          "df54": "20",
+          "chestnut-c2": "19 clicks"
+        }
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:15",
+        "Water Temperature": 90,
+        "Blooming Time": "40s",
+        "Coffee (g)": 18,
+        "Water (ml)": 270,
+        "Instructions": "Pour water slowly over coffee for a lighter, espresso-inspired drink.",
+        "Grinder Settings": {
+          "df54": "22",
+          "chestnut-c2": "20 clicks"
+        }
+      }
+    ]
+  },
+  {
+    "Bean": "Starbucks Espresso Roast",
+    "Description": "A dark roast for bold espresso lovers with rich caramel notes.",
+    "Methods": [
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:7",
+        "Water Temperature": 85,
+        "Blooming Time": "30s",
+        "Coffee (g)": 18,
+        "Water (ml)": 126,
+        "Instructions": "Add coffee, bloom for 30 seconds, then press gently for 1 minute.",
+        "Grinder Settings": {
+          "df54": "20",
+          "chestnut-c2": "19 clicks"
+        }
+      },
+      {
+        "Method": "French Press",
+        "Grind Size": "Coarse",
+        "Ratio": "1:12",
+        "Water Temperature": 92,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 24,
+        "Water (ml)": 360,
+        "Instructions": "Combine coffee and water, steep for 4 minutes, then press slowly.",
+        "Grinder Settings": {
+          "df54": "25",
+          "chestnut-c2": "23 clicks"
+        }
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:15",
+        "Water Temperature": 90,
+        "Blooming Time": "45s",
+        "Coffee (g)": 20,
+        "Water (ml)": 300,
+        "Instructions": "Pour water in a circular motion, aiming for a total brew time of 4 minutes.",
+        "Grinder Settings": {
+          "df54": "22",
+          "chestnut-c2": "20 clicks"
+        }
+      }
+    ]
+  },
+  {
+    "Bean": "Costa Coffee Barista Blend",
+    "Description": "A medium roast with hints of chocolate and nuts, perfect for any brewing method.",
+    "Methods": [
+      {
+        "Method": "Cafetiere",
+        "Grind Size": "Coarse",
+        "Ratio": "1:14",
+        "Water Temperature": 94,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 25,
+        "Water (ml)": 350,
+        "Instructions": "Combine coffee and water, steep for 4 minutes, then press slowly.",
+        "Grinder Settings": {
+          "df54": "25",
+          "chestnut-c2": "23 clicks"
+        }
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:8",
+        "Water Temperature": 90,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 18,
+        "Water (ml)": 144,
+        "Instructions": "Fill the Moka pot, heat until coffee brews into the top chamber, and serve.",
+        "Grinder Settings": {
+          "df54": "18",
+          "chestnut-c2": "17 clicks"
+        }
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium Coarse",
+        "Ratio": "1:16",
+        "Water Temperature": 92,
+        "Blooming Time": "50s",
+        "Coffee (g)": 22,
+        "Water (ml)": 352,
+        "Instructions": "Pour water in stages, ensuring even saturation for a balanced brew.",
+        "Grinder Settings": {
+          "df54": "22",
+          "chestnut-c2": "20 clicks"
+        }
+      }
+    ]
+  }
+]
