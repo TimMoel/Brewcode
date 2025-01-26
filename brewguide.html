@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrewCode - Brew Guide</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Add your existing CSS here */
-      
-      /* Media query to switch between methods toggle buttons and dropdown */
-      @media (max-width: 600px) {
-        #methods {
-          display: none;
-        }
-        #methods-dropdown {
-          display: block;
-        }
-      }
-      @media (min-width: 601px) {
-        #methods {
-          display: block;
-        }
-        #methods-dropdown {
-          display: none;
-        }
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -53,27 +32,31 @@
         <!-- Bean Name and Description -->
         <h1 id="beanName"></h1>
         <p id="description"></p>
-
-        <!-- Brewing Methods Container -->
-        <div id="methods-container">
+    
+        <!-- Brewing Methods Section -->
+        <div id="methodSelectionSection">
+          <!-- Label for Brewing Method Selection -->
+          <label for="methods-dropdown" class="section-label">Select Brewing Method:</label>
+    
           <!-- Toggle Buttons for Methods -->
           <div id="methods">
             <input type="radio" id="method1" name="method" value="method1">
             <label for="method1">Method 1</label>
             <input type="radio" id="method2" name="method" value="method2">
             <label for="method2">Method 2</label>
-            <!-- Add more radio buttons as needed -->
-        </div>
-        
-        <select id="methods-dropdown">
+          </div>
+    
+          <!-- Dropdown for Smaller Screens -->
+          <select id="methods-dropdown">
             <option value="method1">Method 1</option>
             <option value="method2">Method 2</option>
-            <!-- Add more options as needed -->
-        </select>
+          </select>
+        </div>
+    
 
         <!-- Grinder Selection Section -->
         <div id="grinderSection">
-          <label for="grinder-select">Select Your Grinder:</label>
+          <label for="grinder-select" class="section-label">Select Your Grinder:</label>
           <select id="grinder-select">
             <option value="default">Choose Grinder</option>
             <option value="df54">DF54</option>
@@ -164,46 +147,42 @@
           displayMethod(methods[selectedMethodIndex]);
         });
       }
+
       // Display the selected brewing method details
       function displayMethod(method) {
-        const methodDetails = `
-          <p><strong>Grind Size:</strong> ${method["Grind Size"]}</p>
-          <p><strong>Ratio:</strong> ${method.Ratio}</p>
-          <p><strong>Water Temperature:</strong> ${method["Water Temperature"]}°C</p>
-          <p><strong>Blooming Time:</strong> ${method["Blooming Time"]}</p>
-          <p><strong>Coffee (g):</strong> ${method["Coffee (g)"]}</p>
-          <p><strong>Water (ml):</strong> ${method["Water (ml)"]}</p>
-          <p><strong>Instructions:</strong> ${method.Instructions}</p>
-        `;
-        document.getElementById("methodDetails").innerHTML = methodDetails;
+  const methodDetails = `
+    <p><strong>Grind Size:</strong> <span id="grind-size-value">${method["Grind Size"]}</span></p>
+    <p><strong>Ratio:</strong> ${method.Ratio}</p>
+    <p><strong>Water Temperature:</strong> ${method["Water Temperature"]}°C</p>
+    <p><strong>Blooming Time:</strong> ${method["Blooming Time"]}</p>
+    <p><strong>Coffee (g):</strong> ${method["Coffee (g)"]}</p>
+    <p><strong>Water (ml):</strong> ${method["Water (ml)"]}</p>
+    <p><strong>Instructions:</strong> ${method.Instructions}</p>
+  `;
+  document.getElementById("methodDetails").innerHTML = methodDetails;
 
-        // Grinder selection logic
-        const grinderSelect = document.getElementById("grinder-select");
-        const grindSizeValue = document.querySelector(
-          "#methodDetails p strong"
-        ).nextSibling;
+  // Add grinder selection logic
+  const grinderSelect = document.getElementById("grinder-select");
+  const grindSizeValue = document.getElementById("grind-size-value");
 
-        // Reset grinder selection
-        grinderSelect.value = "default";
-        grindSizeValue.textContent = ` ${method["Grind Size"]}`;
+  // Reset grinder selection on method change
+  grinderSelect.value = "default";
 
-        // Listen for grinder selection changes
-        grinderSelect.addEventListener("change", function () {
-          const selectedGrinder = this.value;
+  // Listen for grinder selection changes
+  grinderSelect.addEventListener("change", function () {
+    const selectedGrinder = this.value;
 
-          // Grinder-specific settings
-          const grinderSettings = {
-            df54: method["Grinder Settings"]?.df54 || "Unavailable",
-            "chestnut-c2":
-              method["Grinder Settings"]?.["chestnut-c2"] || "Unavailable",
-          };
+    // Define grinder-specific settings
+    const grinderSettings = {
+      df54: method["Grinder Settings"]?.df54 || "Unavailable",
+      "chestnut-c2": method["Grinder Settings"]?.["chestnut-c2"] || "Unavailable",
+    };
 
-          // Update grind size
-          const newGrindSize =
-            grinderSettings[selectedGrinder] || method["Grind Size"];
-          grindSizeValue.textContent = ` ${newGrindSize}`;
-        });
-      }
+    // Update grind size dynamically
+    grindSizeValue.textContent = grinderSettings[selectedGrinder] || method["Grind Size"];
+  });
+}
+
     </script>
   </body>
 </html>

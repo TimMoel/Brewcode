@@ -115,7 +115,22 @@ header {
     text-align: left;
 }
 
-/* ---------- Brewing Methods Styles ---------- */
+/* ---------- Brewing Methods Section ---------- */
+#methodSelectionSection {
+    margin-top: 20px; /* Space above the section */
+    padding: 10px; /* Inner spacing */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light gray background */
+}
+
+#methodSelectionSection .section-label {
+    margin-bottom: 10px; /* Space below the label */
+    font-size: 16px; /* Font size for the label */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark gray for readability */
+    display: block; /* Block-level element */
+}
 
 /* Toggle buttons for larger screens */
 #methods {
@@ -150,8 +165,6 @@ header {
     text-align: center; /* Center-align the dropdown text */
 }
 
-/* ---------- Method Details ---------- */
-
 #methodDetails {
     display: grid; /* Enable grid layout */
     grid-template-columns: 1fr 1fr; /* Two columns for main details */
@@ -159,33 +172,42 @@ header {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f9f9f9;
     font-size: 14px;
     line-height: 1.6;
     margin-top: 20px;
 }
 
-/* Individual attributes within the grid */
 #methodDetails p {
     margin: 0; /* Remove default margins */
 }
 
 #methodDetails p strong {
     display: block; /* Make labels appear on their own line */
-    font-weight: bold;
+    font-weight: normal; /* Change text weight to normal */
     margin-bottom: 5px; /* Add spacing after labels */
 }
 
-/* Ensure instructions span full width */
 #methodDetails p:last-child {
     grid-column: 1 / -1; /* Span across all columns */
     margin-top: 15px; /* Add spacing above instructions */
 }
 
+/* Dropdown for methods */
+#methods-dropdown {
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for dropdown */
+    border: 1px solid #ccc; /* Border to match other sections */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* Set background to white */
+    font-size: 1rem; /* Font size for readability */
+    margin-bottom: 20px; /* Space below dropdown */
+    text-align: center; /* Center-align the dropdown text */
+}
 /* ---------- Grinder Section ---------- */
-
 #grinderSection {
-    margin-top: 0px; /* Space above the section */
+    margin-top: 20px; /* Space above the section */
     padding: 10px; /* Inner spacing */
     border: 1px solid #ddd; /* Light gray border */
     border-radius: 8px; /* Rounded corners */
