@@ -140,13 +140,14 @@ header {
 /* Dropdown for smaller screens */
 #methods-dropdown {
     display: none; /* Hidden by default */
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    font-size: 1rem;
-    margin-bottom: 20px;
+    width: 100%; /* Full width */
+    padding: 10px; /* Same padding as toggle buttons */
+    border: 1px solid #ccc; /* Same border style */
+    border-radius: 8px; /* Same rounded corners */
+    background-color: #f9f9f9; /* Same background color */
+    font-size: 1rem; /* Consistent font size */
+    margin-bottom: 20px; /* Same margin as toggle buttons */
+    text-align: center; /* Center-align the dropdown text */
 }
 
 /* ---------- Method Details ---------- */
@@ -198,31 +199,7 @@ header {
     width: 100%;
 }
 
-/* ---------- Brewing Methods Styles ---------- */
-
-/* Toggle buttons for larger screens */
-
-#methods input[type="radio"] {
-    margin-right: 8px;
-}
-
-#methods label {
-    margin: 0 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Dropdown for smaller screens */
-#methods-dropdown {
-    display: none; /* Hidden by default */
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
+/* ---------- Responsive Behavior ---------- */
 
 /* Responsive Behavior: Switch to dropdown on narrow screens */
 @media (max-width: 768px) {
