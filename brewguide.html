@@ -32,6 +32,8 @@
         <!-- Bean Name and Description -->
         <h1 id="beanName"></h1>
         <p id="description"></p>
+        <div id="ratingDisplay" class="rating"></div>
+        <div id="ratingWidget" class="rating-widget"></div>
     
         <!-- Brewing Methods Section -->
         <div id="methodSelectionSection">
@@ -100,6 +102,10 @@
 
           // Display first method by default
           displayMethod(selectedBean.Methods[0]);
+          loadRatingData(selectedBean);
+
+          displayAverageRating(selectedBean);
+          setupRatingWidget(selectedBean);
         } catch (error) {
           console.error("Error loading coffee data:", error);
         }
@@ -179,9 +185,84 @@
     };
 
     // Update grind size dynamically
-    grindSizeValue.textContent = grinderSettings[selectedGrinder] || method["Grind Size"];
+  grindSizeValue.textContent = grinderSettings[selectedGrinder] || method["Grind Size"];
   });
 }
+
+      function renderStars(rating) {
+        const full = '★';
+        const empty = '☆';
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+          stars += i <= Math.round(rating) ? full : empty;
+        }
+        return stars;
+      }
+
+      function displayAverageRating(bean) {
+        const ratingDiv = document.getElementById('ratingDisplay');
+        const rating = bean.AverageRating || 0;
+        const count = bean.RatingCount || 0;
+        ratingDiv.innerHTML = renderStars(rating) + ` (${rating.toFixed(1)} / ${count})`;
+      }
+
+      function setupRatingWidget(bean) {
+        const widget = document.getElementById('ratingWidget');
+        widget.innerHTML = '';
+        for (let i = 1; i <= 5; i++) {
+          const span = document.createElement('span');
+          span.classList.add('star');
+          span.innerHTML = '\u2606';
+          span.dataset.value = i;
+          span.addEventListener('click', () => handleRating(bean, i));
+          widget.appendChild(span);
+        }
+        const saved = parseInt(localStorage.getItem(`rating_${bean.Bean}`), 10);
+        if (saved) highlightWidget(saved);
+      }
+
+      function highlightWidget(value) {
+        const stars = document.querySelectorAll('#ratingWidget .star');
+        stars.forEach((star, idx) => {
+          star.innerHTML = idx < value ? '\u2605' : '\u2606';
+        });
+      }
+
+      function loadRatingData(bean) {
+        const data = localStorage.getItem(`ratingData_${bean.Bean}`);
+        if (data) {
+          const parsed = JSON.parse(data);
+          bean.AverageRating = parsed.average;
+          bean.RatingCount = parsed.count;
+        }
+      }
+
+      function saveRatingData(bean) {
+        const data = { average: bean.AverageRating || 0, count: bean.RatingCount || 0 };
+        localStorage.setItem(`ratingData_${bean.Bean}`, JSON.stringify(data));
+      }
+
+      function handleRating(bean, value) {
+        const key = `rating_${bean.Bean}`;
+        const previous = parseInt(localStorage.getItem(key), 10);
+        let avg = bean.AverageRating || 0;
+        let count = bean.RatingCount || 0;
+
+        if (previous) {
+          avg = (avg * count - previous + value) / count;
+        } else {
+          avg = (avg * count + value) / (count + 1);
+          count += 1;
+          bean.RatingCount = count;
+        }
+
+        bean.AverageRating = avg;
+        bean.RatingCount = count;
+        localStorage.setItem(key, value);
+        saveRatingData(bean);
+        highlightWidget(value);
+        displayAverageRating(bean);
+      }
 
     </script>
   </body>

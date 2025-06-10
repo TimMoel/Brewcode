@@ -59,7 +59,9 @@
           "chestnut-c2": "20 clicks"
         }
       }
-    ]
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0
   },
   {
     "Bean": "Lavazza Oro",
@@ -107,7 +109,9 @@
           "chestnut-c2": "20 clicks"
         }
       }
-    ]
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0
   },
   {
     "Bean": "Lavazza Espresso",
@@ -155,7 +159,9 @@
           "chestnut-c2": "20 clicks"
         }
       }
-    ]
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0
   },
   {
     "Bean": "Starbucks Espresso Roast",
@@ -203,7 +209,9 @@
           "chestnut-c2": "20 clicks"
         }
       }
-    ]
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0
   },
   {
     "Bean": "Costa Coffee Barista Blend",
@@ -251,6 +259,8 @@
           "chestnut-c2": "20 clicks"
         }
       }
-    ]
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0
   }
 ]
