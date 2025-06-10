@@ -61,7 +61,10 @@
       }
     ],
     "AverageRating": 0,
-    "RatingCount": 0
+    "RatingCount": 0,
+    "Origin": "Italy",
+    "Roast": "medium",
+    "Tags": ["Italian", "smooth"]
   },
   {
     "Bean": "Lavazza Oro",
@@ -111,7 +114,10 @@
       }
     ],
     "AverageRating": 0,
-    "RatingCount": 0
+    "RatingCount": 0,
+    "Origin": "Italy",
+    "Roast": "medium",
+    "Tags": ["fruity", "floral"]
   },
   {
     "Bean": "Lavazza Espresso",
@@ -161,7 +167,10 @@
       }
     ],
     "AverageRating": 0,
-    "RatingCount": 0
+    "RatingCount": 0,
+    "Origin": "Italy",
+    "Roast": "dark",
+    "Tags": ["bold", "rich"]
   },
   {
     "Bean": "Starbucks Espresso Roast",
@@ -211,7 +220,10 @@
       }
     ],
     "AverageRating": 0,
-    "RatingCount": 0
+    "RatingCount": 0,
+    "Origin": "United States",
+    "Roast": "dark",
+    "Tags": ["caramel", "espresso"]
   },
   {
     "Bean": "Costa Coffee Barista Blend",
@@ -261,6 +273,9 @@
       }
     ],
     "AverageRating": 0,
-    "RatingCount": 0
+    "RatingCount": 0,
+    "Origin": "United Kingdom",
+    "Roast": "medium",
+    "Tags": ["chocolate", "nuts"]
   }
 ]
