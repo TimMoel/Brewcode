@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,41 +7,53 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <header>
-      <div class="header-box"> <!-- Header Box-->
-        <h1 id="BrewCodeTitle"> <!-- Title-->
+      <div class="header-box">
+        <!-- Header Box-->
+        <h1 id="BrewCodeTitle">
+          <!-- Title-->
           <a href="https://timmoel.github.io/Brewcode/" class="site-title">
             BrewC
-            <img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">
+            <img
+              src="https://static.thenounproject.com/png/120176-200.png"
+              alt="Coffee Icon"
+              class="icon"
+            />
             de
           </a>
         </h1>
-        <p id="Sub-Title">Brew Your Perfect Cup</p> <!-- Subtitle-->
+        <p id="Sub-Title">Brew Your Perfect Cup</p>
+        <!-- Subtitle-->
       </div>
     </header>
-    
-    
+
     <main>
-      <h2 id="SearchResultsTitle"> Search Results:</h2>
+      <h2 id="SearchResultsTitle">Search Results:</h2>
+      <div id="activeFilters"></div>
       <div id="results"></div>
     </main>
 
     <script>
-      // Load search results from local storage
-      const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
+      // Load search results and filters from local storage
+      const searchResults =
+        JSON.parse(localStorage.getItem("searchResults")) || [];
+      const searchFilters =
+        JSON.parse(localStorage.getItem("searchFilters")) || {};
+      document.getElementById("activeFilters").innerHTML =
+        formatFilters(searchFilters);
 
       // Display results
-      const resultsDiv = document.getElementById('results');
+      const resultsDiv = document.getElementById("results");
       if (searchResults.length === 0) {
-        resultsDiv.innerHTML = '<p>No matching beans found. Please try again.</p>';
+        resultsDiv.innerHTML =
+          "<p>No matching beans found. Please try again.</p>";
       } else {
         resultsDiv.innerHTML = searchResults
-          .map(bean => {
+          .map((bean) => {
             const stored = localStorage.getItem(`ratingData_${bean.Bean}`);
             const data = stored ? JSON.parse(stored) : null;
-            const rating = data ? data.average : (bean.AverageRating || 0);
-            const count = data ? data.count : (bean.RatingCount || 0);
+            const rating = data ? data.average : bean.AverageRating || 0;
+            const count = data ? data.count : bean.RatingCount || 0;
             const stars = renderStars(rating);
             return `
             <div class="result-item" onclick="goToBrewGuide('${bean.Bean}')">
@@ -51,14 +63,26 @@
             </div>
           `;
           })
-          .join('');
+          .join("");
+      }
+
+      function formatFilters(filters) {
+        const parts = [];
+        if (filters.query) parts.push(`Query: ${filters.query}`);
+        if (filters.origin) parts.push(`Origin: ${filters.origin}`);
+        if (filters.roast) parts.push(`Roast: ${filters.roast}`);
+        if (filters.tags && filters.tags.length)
+          parts.push(`Tags: ${filters.tags.join(", ")}`);
+        return parts.length
+          ? `<p><strong>Filters:</strong> ${parts.join(" | ")}</p>`
+          : "";
       }
 
       // Render star icons based on rating
       function renderStars(rating) {
-        const full = '★';
-        const empty = '☆';
-        let stars = '';
+        const full = "★";
+        const empty = "☆";
+        let stars = "";
         for (let i = 1; i <= 5; i++) {
           stars += i <= Math.round(rating) ? full : empty;
         }
@@ -67,8 +91,8 @@
 
       // Redirect to Brew Guide Page
       function goToBrewGuide(beanName) {
-        localStorage.setItem('selectedBean', beanName);
-        window.location.href = 'brewguide.html';
+        localStorage.setItem("selectedBean", beanName);
+        window.location.href = "brewguide.html";
       }
     </script>
   </body>

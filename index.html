@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,29 +6,47 @@
     <title>BrewCode - Landing Page</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body> 
+  <body>
     <header>
-      <div class="header-box"> <!-- Header Box-->
-        <h1 id="BrewCodeTitle"> <!-- Title-->
+      <div class="header-box">
+        <!-- Header Box-->
+        <h1 id="BrewCodeTitle">
+          <!-- Title-->
           <a href="https://timmoel.github.io/Brewcode/" class="site-title">
             BrewC
-            <img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">
+            <img
+              src="https://static.thenounproject.com/png/120176-200.png"
+              alt="Coffee Icon"
+              class="icon"
+            />
             de
           </a>
         </h1>
-        <p id="Sub-Title">Brew Your Perfect Cup</p> <!-- Subtitle-->
+        <p id="Sub-Title">Brew Your Perfect Cup</p>
+        <!-- Subtitle-->
       </div>
     </header>
-    
+
     <main>
       <div class="coffee-bean-search">
         <label for="coffeeSearch">Enter Your Coffee Bean Name</label>
-        <input
-          id="coffeeSearch"
-          type="text"
-          placeholder="e.g., Lavazza"
-        />
+        <input id="coffeeSearch" type="text" placeholder="e.g., Lavazza" />
         <button id="searchButton">Search</button>
+        <label for="originSelect">Origin:</label>
+        <select id="originSelect">
+          <option value="">All Origins</option>
+        </select>
+        <label for="roastSelect">Roast:</label>
+        <select id="roastSelect">
+          <option value="">Any Roast</option>
+          <option value="light">Light</option>
+          <option value="medium">Medium</option>
+          <option value="dark">Dark</option>
+        </select>
+        <div id="tagFilters">
+          <span>Tags:</span>
+          <div id="tagContainer"></div>
+        </div>
       </div>
     </main>
 
@@ -38,33 +56,86 @@
       // Load coffee data on page load
       window.onload = async () => {
         try {
-          const response = await fetch('data.json'); // Load local JSON file
+          const response = await fetch("data.json"); // Load local JSON file
           coffeeData = await response.json();
-          console.log('Coffee data loaded:', coffeeData);
+          populateFilters();
+          console.log("Coffee data loaded:", coffeeData);
         } catch (error) {
-          console.error('Error loading coffee data:', error);
+          console.error("Error loading coffee data:", error);
         }
       };
 
+      function populateFilters() {
+        const originSelect = document.getElementById("originSelect");
+        const tagContainer = document.getElementById("tagContainer");
+        const origins = [...new Set(coffeeData.map((b) => b.Origin))];
+        origins.forEach((origin) => {
+          const opt = document.createElement("option");
+          opt.value = origin;
+          opt.textContent = origin;
+          originSelect.appendChild(opt);
+        });
+        const tags = [...new Set(coffeeData.flatMap((b) => b.Tags))];
+        tags.forEach((tag) => {
+          const label = document.createElement("label");
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.value = tag;
+          label.appendChild(cb);
+          label.appendChild(document.createTextNode(tag));
+          tagContainer.appendChild(label);
+        });
+      }
+
       // Search button event listener
-      document.getElementById('searchButton').addEventListener('click', () => {
-        const searchQuery = document.getElementById('coffeeSearch').value.trim().toLowerCase();
+      document.getElementById("searchButton").addEventListener("click", () => {
+        const searchQuery = document
+          .getElementById("coffeeSearch")
+          .value.trim()
+          .toLowerCase();
+        const selectedOrigin = document.getElementById("originSelect").value;
+        const selectedRoast = document.getElementById("roastSelect").value;
+        const selectedTags = Array.from(
+          document.querySelectorAll("#tagContainer input:checked"),
+        ).map((cb) => cb.value);
 
         if (!searchQuery) {
-          alert('Please enter a coffee bean name!');
+          alert("Please enter a coffee bean name!");
           return;
         }
 
-        // Filter matching beans
-        const matchingBeans = coffeeData.filter(bean =>
-          bean.Bean.toLowerCase().includes(searchQuery)
+        let matchingBeans = coffeeData.filter((bean) =>
+          bean.Bean.toLowerCase().includes(searchQuery),
         );
 
-        // Store results in local storage
-        localStorage.setItem('searchResults', JSON.stringify(matchingBeans));
+        if (selectedOrigin) {
+          matchingBeans = matchingBeans.filter(
+            (bean) => bean.Origin === selectedOrigin,
+          );
+        }
+        if (selectedRoast) {
+          matchingBeans = matchingBeans.filter(
+            (bean) => bean.Roast === selectedRoast,
+          );
+        }
+        if (selectedTags.length) {
+          matchingBeans = matchingBeans.filter((bean) =>
+            selectedTags.every((tag) => bean.Tags.includes(tag)),
+          );
+        }
+
+        const filters = {
+          query: searchQuery,
+          origin: selectedOrigin,
+          roast: selectedRoast,
+          tags: selectedTags,
+        };
+
+        localStorage.setItem("searchResults", JSON.stringify(matchingBeans));
+        localStorage.setItem("searchFilters", JSON.stringify(filters));
 
         // Redirect to Results Page
-        window.location.href = 'results.html';
+        window.location.href = "results.html";
       });
     </script>
   </body>
