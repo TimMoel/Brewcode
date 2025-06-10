@@ -37,15 +37,32 @@
         resultsDiv.innerHTML = '<p>No matching beans found. Please try again.</p>';
       } else {
         resultsDiv.innerHTML = searchResults
-          .map(
-            bean => `
+          .map(bean => {
+            const stored = localStorage.getItem(`ratingData_${bean.Bean}`);
+            const data = stored ? JSON.parse(stored) : null;
+            const rating = data ? data.average : (bean.AverageRating || 0);
+            const count = data ? data.count : (bean.RatingCount || 0);
+            const stars = renderStars(rating);
+            return `
             <div class="result-item" onclick="goToBrewGuide('${bean.Bean}')">
               <h3>${bean.Bean}</h3>
               <p>${bean.Description}</p>
+              <p class="rating">${stars} (${rating.toFixed(1)} / ${count})</p>
             </div>
-          `
-          )
+          `;
+          })
           .join('');
+      }
+
+      // Render star icons based on rating
+      function renderStars(rating) {
+        const full = '★';
+        const empty = '☆';
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+          stars += i <= Math.round(rating) ? full : empty;
+        }
+        return stars;
       }
 
       // Redirect to Brew Guide Page
