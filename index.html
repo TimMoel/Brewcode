@@ -31,6 +31,7 @@
       <div class="coffee-bean-search">
         <label for="coffeeSearch">Enter Your Coffee Bean Name</label>
         <input id="coffeeSearch" type="text" placeholder="e.g., Lavazza" />
+        <p id="searchError" class="search-error" hidden>Please enter a coffee bean name.</p>
         <button id="searchButton">Search</button>
         <label for="originSelect">Origin:</label>
         <select id="originSelect">
@@ -99,10 +100,12 @@
           document.querySelectorAll("#tagContainer input:checked"),
         ).map((cb) => cb.value);
 
+        const errorEl = document.getElementById("searchError");
         if (!searchQuery) {
-          alert("Please enter a coffee bean name!");
+          errorEl.hidden = false;
           return;
         }
+        errorEl.hidden = true;
 
         let matchingBeans = coffeeData.filter((bean) =>
           bean.Bean.toLowerCase().includes(searchQuery),
