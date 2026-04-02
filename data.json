@@ -277,5 +277,445 @@
     "Origin": "United Kingdom",
     "Roast": "medium",
     "Tags": ["chocolate", "nuts"]
+  },
+  {
+    "Bean": "Ethiopian Yirgacheffe",
+    "Description": "A vibrant light roast from Ethiopia known for its complex floral and fruity profile, with bright acidity and exceptional clarity of flavour.",
+    "Methods": [
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:16",
+        "Water Temperature": 93,
+        "Blooming Time": "45s",
+        "Coffee (g)": 20,
+        "Water (ml)": 320,
+        "Instructions": "Pour water in stages over 3 minutes to highlight the bright acidity and floral notes.",
+        "Grinder Settings": { "df54": "23", "chestnut-c2": "21 clicks" }
+      },
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:7",
+        "Water Temperature": 90,
+        "Blooming Time": "30s",
+        "Coffee (g)": 17,
+        "Water (ml)": 119,
+        "Instructions": "Bloom for 30 seconds, then press gently to extract delicate floral and berry characteristics.",
+        "Grinder Settings": { "df54": "21", "chestnut-c2": "19 clicks" }
+      },
+      {
+        "Method": "French Press",
+        "Grind Size": "Coarse",
+        "Ratio": "1:15",
+        "Water Temperature": 92,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 18,
+        "Water (ml)": 270,
+        "Instructions": "Steep for 4 minutes with gentle agitation to preserve the complex flavour profile.",
+        "Grinder Settings": { "df54": "26", "chestnut-c2": "24 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Ethiopia",
+    "Roast": "light",
+    "Tags": ["floral", "fruity", "bright"]
+  },
+  {
+    "Bean": "Colombian Supremo",
+    "Description": "A well-balanced medium roast from Colombia's high-altitude regions, featuring notes of cocoa, caramel, and subtle fruit with a smooth, clean finish.",
+    "Methods": [
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:16",
+        "Water Temperature": 92,
+        "Blooming Time": "40s",
+        "Coffee (g)": 22,
+        "Water (ml)": 352,
+        "Instructions": "Pour water slowly in circular motions for even extraction and balanced sweetness.",
+        "Grinder Settings": { "df54": "22", "chestnut-c2": "20 clicks" }
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:8",
+        "Water Temperature": 90,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 18,
+        "Water (ml)": 144,
+        "Instructions": "Heat until coffee rises into the upper chamber for a rich, full-bodied espresso-style brew.",
+        "Grinder Settings": { "df54": "19", "chestnut-c2": "18 clicks" }
+      },
+      {
+        "Method": "Cafetiere",
+        "Grind Size": "Coarse",
+        "Ratio": "1:12",
+        "Water Temperature": 94,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 20,
+        "Water (ml)": 240,
+        "Instructions": "Steep for 4 minutes with a gentle stir halfway through for optimal body and clarity.",
+        "Grinder Settings": { "df54": "25", "chestnut-c2": "23 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Colombia",
+    "Roast": "medium",
+    "Tags": ["balanced", "cocoa", "caramel"]
+  },
+  {
+    "Bean": "Kenyan AA",
+    "Description": "A premium single-origin from Kenya's high plateaus, delivering a bright cup with wine-like acidity, blackcurrant, and stone fruit notes.",
+    "Methods": [
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:16",
+        "Water Temperature": 94,
+        "Blooming Time": "45s",
+        "Coffee (g)": 20,
+        "Water (ml)": 320,
+        "Instructions": "Pour hot water in stages to extract the vibrant acidity and fruit-forward profile.",
+        "Grinder Settings": { "df54": "23", "chestnut-c2": "21 clicks" }
+      },
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:6",
+        "Water Temperature": 91,
+        "Blooming Time": "30s",
+        "Coffee (g)": 18,
+        "Water (ml)": 108,
+        "Instructions": "Bloom briefly, then press slowly to balance the wine-like character with body.",
+        "Grinder Settings": { "df54": "21", "chestnut-c2": "20 clicks" }
+      },
+      {
+        "Method": "French Press",
+        "Grind Size": "Coarse",
+        "Ratio": "1:15",
+        "Water Temperature": 93,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 19,
+        "Water (ml)": 285,
+        "Instructions": "Steep for 4 minutes, then press gently to preserve the bright, complex fruit notes.",
+        "Grinder Settings": { "df54": "26", "chestnut-c2": "24 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Kenya",
+    "Roast": "light",
+    "Tags": ["bright", "blackcurrant", "fruity"]
+  },
+  {
+    "Bean": "Guatemalan Antigua",
+    "Description": "A full-bodied medium roast from Guatemala's volcanic highlands, offering rich chocolate, spiced notes, and smoky undertones with excellent balance.",
+    "Methods": [
+      {
+        "Method": "French Press",
+        "Grind Size": "Coarse",
+        "Ratio": "1:13",
+        "Water Temperature": 92,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 22,
+        "Water (ml)": 286,
+        "Instructions": "Steep for 4 minutes with gentle stirring to fully extract the spiced and chocolate flavours.",
+        "Grinder Settings": { "df54": "25", "chestnut-c2": "23 clicks" }
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:9",
+        "Water Temperature": 90,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 19,
+        "Water (ml)": 171,
+        "Instructions": "Heat until brewed, producing a bold cup that highlights the volcanic terroir.",
+        "Grinder Settings": { "df54": "19", "chestnut-c2": "18 clicks" }
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium Coarse",
+        "Ratio": "1:16",
+        "Water Temperature": 91,
+        "Blooming Time": "50s",
+        "Coffee (g)": 21,
+        "Water (ml)": 336,
+        "Instructions": "Pour slowly for 3-4 minutes to balance the rich body with chocolate and spice notes.",
+        "Grinder Settings": { "df54": "22", "chestnut-c2": "20 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Guatemala",
+    "Roast": "medium",
+    "Tags": ["chocolate", "spiced", "full-bodied"]
+  },
+  {
+    "Bean": "Costa Rican Tarrazu",
+    "Description": "A smooth medium roast from Costa Rica's volcanic region, featuring notes of nuts, cocoa, and tropical fruit with a sweet, syrupy body.",
+    "Methods": [
+      {
+        "Method": "Cafetiere",
+        "Grind Size": "Coarse",
+        "Ratio": "1:12",
+        "Water Temperature": 93,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 21,
+        "Water (ml)": 252,
+        "Instructions": "Steep for 4 minutes, pressing slowly to maximise the sweet, syrupy body and nut notes.",
+        "Grinder Settings": { "df54": "25", "chestnut-c2": "23 clicks" }
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:16",
+        "Water Temperature": 91,
+        "Blooming Time": "40s",
+        "Coffee (g)": 20,
+        "Water (ml)": 320,
+        "Instructions": "Pour water in stages to extract the smooth chocolate and tropical fruit characteristics.",
+        "Grinder Settings": { "df54": "22", "chestnut-c2": "20 clicks" }
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:9",
+        "Water Temperature": 89,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 18,
+        "Water (ml)": 162,
+        "Instructions": "Heat until brewed for a concentrated shot with rich cocoa and nutty undertones.",
+        "Grinder Settings": { "df54": "19", "chestnut-c2": "17 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Costa Rica",
+    "Roast": "medium",
+    "Tags": ["nuts", "cocoa", "sweet"]
+  },
+  {
+    "Bean": "Brazilian Santos",
+    "Description": "A classic dark roast from Brazil's largest coffee region, delivering full body with low acidity, nutty sweetness, and subtle chocolate undertones.",
+    "Methods": [
+      {
+        "Method": "French Press",
+        "Grind Size": "Coarse",
+        "Ratio": "1:12",
+        "Water Temperature": 91,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 23,
+        "Water (ml)": 276,
+        "Instructions": "Steep for 4 minutes to develop the rich, full body and subtle chocolate character.",
+        "Grinder Settings": { "df54": "25", "chestnut-c2": "23 clicks" }
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:8",
+        "Water Temperature": 88,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 19,
+        "Water (ml)": 152,
+        "Instructions": "Heat slowly for a smooth, sweet espresso-style brew with low acidity.",
+        "Grinder Settings": { "df54": "19", "chestnut-c2": "17 clicks" }
+      },
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium Coarse",
+        "Ratio": "1:16",
+        "Water Temperature": 90,
+        "Blooming Time": "35s",
+        "Coffee (g)": 21,
+        "Water (ml)": 336,
+        "Instructions": "Pour water gently for 3-4 minutes to highlight the smooth, sweet notes.",
+        "Grinder Settings": { "df54": "22", "chestnut-c2": "20 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Brazil",
+    "Roast": "dark",
+    "Tags": ["nutty", "sweet", "smooth"]
+  },
+  {
+    "Bean": "Sumatra Mandheling",
+    "Description": "A distinctive dark roast from Indonesia with earthy, herbal notes, full body, and low acidity, featuring subtle spice and tobacco undertones.",
+    "Methods": [
+      {
+        "Method": "French Press",
+        "Grind Size": "Coarse",
+        "Ratio": "1:13",
+        "Water Temperature": 90,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 21,
+        "Water (ml)": 273,
+        "Instructions": "Steep for 4 minutes with gentle agitation to extract the earthy, herbal complexity.",
+        "Grinder Settings": { "df54": "25", "chestnut-c2": "23 clicks" }
+      },
+      {
+        "Method": "Cafetiere",
+        "Grind Size": "Coarse",
+        "Ratio": "1:12",
+        "Water Temperature": 91,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 22,
+        "Water (ml)": 264,
+        "Instructions": "Combine coffee and water, steep for 4 minutes, then press slowly for a bold cup.",
+        "Grinder Settings": { "df54": "25", "chestnut-c2": "23 clicks" }
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:8",
+        "Water Temperature": 87,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 20,
+        "Water (ml)": 160,
+        "Instructions": "Heat gently to avoid bitterness and bring out the subtle spice and tobacco notes.",
+        "Grinder Settings": { "df54": "19", "chestnut-c2": "17 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Indonesia",
+    "Roast": "dark",
+    "Tags": ["earthy", "herbal", "full-bodied"]
+  },
+  {
+    "Bean": "Jamaican Blue Mountain",
+    "Description": "A rare, premium bean from Jamaica's Blue Mountains, renowned for its exceptional smoothness, mild balanced flavour, and subtle sweetness with minimal acidity.",
+    "Methods": [
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:16",
+        "Water Temperature": 89,
+        "Blooming Time": "35s",
+        "Coffee (g)": 18,
+        "Water (ml)": 288,
+        "Instructions": "Pour slowly and gently to preserve the delicate, smooth character of this premium bean.",
+        "Grinder Settings": { "df54": "22", "chestnut-c2": "20 clicks" }
+      },
+      {
+        "Method": "Cafetiere",
+        "Grind Size": "Coarse",
+        "Ratio": "1:12",
+        "Water Temperature": 92,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 20,
+        "Water (ml)": 240,
+        "Instructions": "Steep for 4 minutes with minimal agitation to maintain the subtle, smooth profile.",
+        "Grinder Settings": { "df54": "25", "chestnut-c2": "23 clicks" }
+      },
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:7",
+        "Water Temperature": 87,
+        "Blooming Time": "25s",
+        "Coffee (g)": 16,
+        "Water (ml)": 112,
+        "Instructions": "Use cooler water and gentle pressure to highlight the refined, mellow characteristics.",
+        "Grinder Settings": { "df54": "21", "chestnut-c2": "19 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Jamaica",
+    "Roast": "medium",
+    "Tags": ["smooth", "mild", "refined"]
+  },
+  {
+    "Bean": "Honduras SHG",
+    "Description": "A high-grown medium roast from Honduras, offering balanced acidity, chocolate and nutty notes, and a clean, pleasant finish.",
+    "Methods": [
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:16",
+        "Water Temperature": 92,
+        "Blooming Time": "45s",
+        "Coffee (g)": 21,
+        "Water (ml)": 336,
+        "Instructions": "Pour water in circular motions for even extraction and balanced chocolate and nut notes.",
+        "Grinder Settings": { "df54": "22", "chestnut-c2": "20 clicks" }
+      },
+      {
+        "Method": "Moka Pot",
+        "Grind Size": "Medium",
+        "Ratio": "1:8",
+        "Water Temperature": 89,
+        "Blooming Time": "N/A",
+        "Coffee (g)": 18,
+        "Water (ml)": 144,
+        "Instructions": "Heat until brewed for a rich, concentrated cup with a clean finish.",
+        "Grinder Settings": { "df54": "19", "chestnut-c2": "18 clicks" }
+      },
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:7",
+        "Water Temperature": 91,
+        "Blooming Time": "30s",
+        "Coffee (g)": 17,
+        "Water (ml)": 119,
+        "Instructions": "Bloom briefly, then press gently to extract a balanced, clean-tasting cup.",
+        "Grinder Settings": { "df54": "21", "chestnut-c2": "19 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Honduras",
+    "Roast": "medium",
+    "Tags": ["balanced", "chocolate", "nutty"]
+  },
+  {
+    "Bean": "Rwanda Bourbon",
+    "Description": "A light roast from Rwanda's high-altitude regions, featuring bright acidity, red fruit notes, floral aromas, and exceptional cup complexity.",
+    "Methods": [
+      {
+        "Method": "Filter Coffee",
+        "Grind Size": "Medium",
+        "Ratio": "1:16",
+        "Water Temperature": 93,
+        "Blooming Time": "45s",
+        "Coffee (g)": 20,
+        "Water (ml)": 320,
+        "Instructions": "Pour water slowly in stages to highlight the bright acidity and fruity complexity.",
+        "Grinder Settings": { "df54": "23", "chestnut-c2": "21 clicks" }
+      },
+      {
+        "Method": "AeroPress",
+        "Grind Size": "Fine",
+        "Ratio": "1:6",
+        "Water Temperature": 90,
+        "Blooming Time": "30s",
+        "Coffee (g)": 18,
+        "Water (ml)": 108,
+        "Instructions": "Bloom gently, then press slowly to balance acidity with clarity and floral notes.",
+        "Grinder Settings": { "df54": "21", "chestnut-c2": "20 clicks" }
+      },
+      {
+        "Method": "French Press",
+        "Grind Size": "Coarse",
+        "Ratio": "1:14",
+        "Water Temperature": 92,
+        "Blooming Time": "1 min",
+        "Coffee (g)": 19,
+        "Water (ml)": 266,
+        "Instructions": "Steep for 4 minutes with gentle stirring to develop the fruity and floral complexity.",
+        "Grinder Settings": { "df54": "26", "chestnut-c2": "24 clicks" }
+      }
+    ],
+    "AverageRating": 0,
+    "RatingCount": 0,
+    "Origin": "Rwanda",
+    "Roast": "light",
+    "Tags": ["bright", "fruity", "floral"]
   }
 ]

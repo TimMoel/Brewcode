@@ -20,10 +20,9 @@
 
     <main>
       <div class="search-row">
-        <input id="coffeeSearch" type="text" placeholder="Search coffee beans, e.g. Lavazza…" />
+        <input id="coffeeSearch" type="text" placeholder="Filter by name, or leave blank to browse all…" />
         <button id="searchButton">Search</button>
       </div>
-      <p id="searchError" class="search-error" hidden>Please enter a coffee bean name.</p>
 
       <div class="filters">
         <label for="originSelect">Origin</label>
@@ -81,22 +80,15 @@
 
       document.getElementById("searchButton").addEventListener("click", () => {
         const searchQuery = document.getElementById("coffeeSearch").value.trim().toLowerCase();
-        const errorEl = document.getElementById("searchError");
-        if (!searchQuery) {
-          errorEl.hidden = false;
-          return;
-        }
-        errorEl.hidden = true;
-
         const selectedOrigin = document.getElementById("originSelect").value;
         const selectedRoast = document.getElementById("roastSelect").value;
         const selectedTags = Array.from(
           document.querySelectorAll("#tagContainer input:checked")
         ).map((cb) => cb.value);
 
-        let matchingBeans = coffeeData.filter((bean) =>
-          bean.Bean.toLowerCase().includes(searchQuery)
-        );
+        let matchingBeans = searchQuery
+          ? coffeeData.filter((bean) => bean.Bean.toLowerCase().includes(searchQuery))
+          : [...coffeeData];
         if (selectedOrigin) matchingBeans = matchingBeans.filter((bean) => bean.Origin === selectedOrigin);
         if (selectedRoast)  matchingBeans = matchingBeans.filter((bean) => bean.Roast === selectedRoast);
         if (selectedTags.length) matchingBeans = matchingBeans.filter((bean) =>
