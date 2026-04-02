@@ -28,6 +28,7 @@
     </header>
 
     <main>
+      <a href="results.html" class="back-link">← Back to results</a>
       <div id="brewGuide">
         <!-- Bean Name and Description -->
         <h1 id="beanName"></h1>
@@ -73,6 +74,7 @@
 
     <script>
       let coffeeData = [];
+      let currentMethod = null;
 
       // Load coffee data and populate methods on page load
       window.onload = async () => {
@@ -156,38 +158,38 @@
 
       // Display the selected brewing method details
       function displayMethod(method) {
-  const methodDetails = `
-    <p><strong>Grind Size:</strong> <span id="grind-size-value">${method["Grind Size"]}</span></p>
-    <p><strong>Ratio:</strong> ${method.Ratio}</p>
-    <p><strong>Water Temperature:</strong> ${method["Water Temperature"]}°C</p>
-    <p><strong>Blooming Time:</strong> ${method["Blooming Time"]}</p>
-    <p><strong>Coffee (g):</strong> ${method["Coffee (g)"]}</p>
-    <p><strong>Water (ml):</strong> ${method["Water (ml)"]}</p>
-    <p><strong>Instructions:</strong> ${method.Instructions}</p>
-  `;
-  document.getElementById("methodDetails").innerHTML = methodDetails;
+        currentMethod = method;
+        const methodDetails = `
+          <p><strong>Grind Size:</strong> <span id="grind-size-value">${method["Grind Size"]}</span></p>
+          <p><strong>Ratio:</strong> ${method.Ratio}</p>
+          <p><strong>Water Temperature:</strong> ${method["Water Temperature"]}°C</p>
+          <p><strong>Blooming Time:</strong> ${method["Blooming Time"]}</p>
+          <p><strong>Coffee (g):</strong> ${method["Coffee (g)"]}</p>
+          <p><strong>Water (ml):</strong> ${method["Water (ml)"]}</p>
+          <p><strong>Instructions:</strong> ${method.Instructions}</p>
+        `;
+        document.getElementById("methodDetails").innerHTML = methodDetails;
 
-  // Add grinder selection logic
-  const grinderSelect = document.getElementById("grinder-select");
-  const grindSizeValue = document.getElementById("grind-size-value");
+        // Reset grinder selection on method change
+        const grinderSelect = document.getElementById("grinder-select");
+        grinderSelect.value = "default";
+        updateGrindSize();
+      }
 
-  // Reset grinder selection on method change
-  grinderSelect.value = "default";
+      function updateGrindSize() {
+        const grinderSelect = document.getElementById("grinder-select");
+        const grindSizeValue = document.getElementById("grind-size-value");
+        if (!grindSizeValue || !currentMethod) return;
+        const selectedGrinder = grinderSelect.value;
+        const grinderSettings = {
+          df54: currentMethod["Grinder Settings"]?.df54 || "Unavailable",
+          "chestnut-c2": currentMethod["Grinder Settings"]?.["chestnut-c2"] || "Unavailable",
+        };
+        grindSizeValue.textContent = grinderSettings[selectedGrinder] || currentMethod["Grind Size"];
+      }
 
-  // Listen for grinder selection changes
-  grinderSelect.addEventListener("change", function () {
-    const selectedGrinder = this.value;
-
-    // Define grinder-specific settings
-    const grinderSettings = {
-      df54: method["Grinder Settings"]?.df54 || "Unavailable",
-      "chestnut-c2": method["Grinder Settings"]?.["chestnut-c2"] || "Unavailable",
-    };
-
-    // Update grind size dynamically
-  grindSizeValue.textContent = grinderSettings[selectedGrinder] || method["Grind Size"];
-  });
-}
+      // Attach grinder listener once
+      document.getElementById("grinder-select").addEventListener("change", updateGrindSize);
 
       function renderStars(rating) {
         const full = '★';
