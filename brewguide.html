@@ -1,73 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BrewCode - Brew Guide</title>
+    <title>BrewCode – Brew Guide</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <div class="header-box">
-        <!-- Header Box -->
+      <div class="header-inner">
         <h1 id="BrewCodeTitle">
-          <!-- Title -->
-          <a href="https://timmoel.github.io/Brewcode/" class="site-title">
-            BrewC
-            <img
-              src="https://static.thenounproject.com/png/120176-200.png"
-              alt="Coffee Icon"
-              class="icon"
-            />
-            de
+          <a href="index.html" class="site-title">
+            BrewC<img src="https://static.thenounproject.com/png/120176-200.png" alt="Coffee Icon" class="icon">de
           </a>
         </h1>
-        <p id="Sub-Title">Brew Your Perfect Cup</p>
-        <!-- Subtitle -->
+        <span id="Sub-Title">Brew Your Perfect Cup</span>
       </div>
     </header>
 
     <main>
       <a href="results.html" class="back-link">← Back to results</a>
+
       <div id="brewGuide">
-        <!-- Bean Name and Description -->
         <h1 id="beanName"></h1>
         <p id="description"></p>
         <div id="ratingDisplay" class="rating"></div>
         <div id="ratingWidget" class="rating-widget"></div>
-    
-        <!-- Brewing Methods Section -->
-        <div id="methodSelectionSection">
-          <!-- Label for Brewing Method Selection -->
-          <label for="methods-dropdown" class="section-label">Select Brewing Method:</label>
-    
-          <!-- Toggle Buttons for Methods -->
-          <div id="methods">
-            <input type="radio" id="method1" name="method" value="method1">
-            <label for="method1">Method 1</label>
-            <input type="radio" id="method2" name="method" value="method2">
-            <label for="method2">Method 2</label>
-          </div>
-    
-          <!-- Dropdown for Smaller Screens -->
-          <select id="methods-dropdown">
-            <option value="method1">Method 1</option>
-            <option value="method2">Method 2</option>
-          </select>
-        </div>
-    
 
-        <!-- Grinder Selection Section -->
-        <div id="grinderSection">
-          <label for="grinder-select" class="section-label">Select Your Grinder:</label>
+        <nav class="method-nav" id="methodNav"></nav>
+
+        <div class="grinder-row">
+          <label for="grinder-select">Grinder</label>
           <select id="grinder-select">
-            <option value="default">Choose Grinder</option>
+            <option value="default">— select —</option>
             <option value="df54">DF54</option>
             <option value="chestnut-c2">Chestnut C2</option>
           </select>
         </div>
 
-        <!-- Brewing Method Details -->
         <div id="methodDetails"></div>
       </div>
     </main>
@@ -76,36 +46,25 @@
       let coffeeData = [];
       let currentMethod = null;
 
-      // Load coffee data and populate methods on page load
       window.onload = async () => {
         try {
-          const response = await fetch("data.json"); // Load local JSON file
+          const response = await fetch("data.json");
           coffeeData = await response.json();
 
-          // Get selected bean from local storage
           const selectedBeanName = localStorage.getItem("selectedBean");
-          const selectedBean = coffeeData.find(
-            (bean) => bean.Bean === selectedBeanName
-          );
+          const selectedBean = coffeeData.find((bean) => bean.Bean === selectedBeanName);
 
           if (!selectedBean) {
-            document.getElementById("brewGuide").innerHTML =
-              "<p>Bean not found.</p>";
+            document.getElementById("brewGuide").innerHTML = "<p style='color:#828282;'>Bean not found.</p>";
             return;
           }
 
-          // Populate the Brew Guide content
-          document.getElementById("beanName").innerText = selectedBean.Bean;
-          document.getElementById("description").innerText =
-            selectedBean.Description;
+          document.getElementById("beanName").textContent = selectedBean.Bean;
+          document.getElementById("description").textContent = selectedBean.Description;
 
-          // Populate both methods toggle buttons and dropdown
           populateMethods(selectedBean.Methods);
-
-          // Display first method by default
           displayMethod(selectedBean.Methods[0]);
           loadRatingData(selectedBean);
-
           displayAverageRating(selectedBean);
           setupRatingWidget(selectedBean);
         } catch (error) {
@@ -113,110 +72,73 @@
         }
       };
 
-      // Populate the methods toggle buttons and dropdown
       function populateMethods(methods) {
-        const methodsDiv = document.getElementById("methods");
-        const methodsDropdown = document.getElementById("methods-dropdown");
+        const nav = document.getElementById("methodNav");
+        nav.innerHTML = methods.map((method, index) =>
+          `<a data-index="${index}" class="${index === 0 ? "active" : ""}">${method.Method}</a>`
+        ).join("");
 
-        // Populate toggle buttons
-        methodsDiv.innerHTML = methods
-          .map(
-            (method, index) => `
-            <label>
-              <input type="radio" name="method" value="${index}" ${
-              index === 0 ? "checked" : ""
-            }>
-              ${method.Method}
-            </label>
-          `
-          )
-          .join("");
-
-        // Populate dropdown
-        methodsDropdown.innerHTML = methods
-          .map(
-            (method, index) => `
-            <option value="${index}" ${index === 0 ? "selected" : ""}>
-              ${method.Method}
-            </option>
-          `
-          )
-          .join("");
-
-        // Event listener for the dropdown
-        methodsDropdown.addEventListener("change", (e) => {
-          const selectedMethodIndex = e.target.value;
-          displayMethod(methods[selectedMethodIndex]);
-        });
-
-        // Event listener for radio buttons
-        methodsDiv.addEventListener("change", (e) => {
-          const selectedMethodIndex = e.target.value;
-          displayMethod(methods[selectedMethodIndex]);
+        nav.addEventListener("click", (e) => {
+          const link = e.target.closest("a");
+          if (!link) return;
+          nav.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+          link.classList.add("active");
+          displayMethod(methods[parseInt(link.dataset.index)]);
         });
       }
 
-      // Display the selected brewing method details
       function displayMethod(method) {
         currentMethod = method;
-        const methodDetails = `
-          <p><strong>Grind Size:</strong> <span id="grind-size-value">${method["Grind Size"]}</span></p>
-          <p><strong>Ratio:</strong> ${method.Ratio}</p>
-          <p><strong>Water Temperature:</strong> ${method["Water Temperature"]}°C</p>
-          <p><strong>Blooming Time:</strong> ${method["Blooming Time"]}</p>
-          <p><strong>Coffee (g):</strong> ${method["Coffee (g)"]}</p>
-          <p><strong>Water (ml):</strong> ${method["Water (ml)"]}</p>
-          <p><strong>Instructions:</strong> ${method.Instructions}</p>
+        document.getElementById("methodDetails").innerHTML = `
+          <table class="method-table">
+            <tr><td>Grind Size</td><td><span id="grind-size-value">${method["Grind Size"]}</span></td></tr>
+            <tr><td>Ratio</td><td>${method.Ratio}</td></tr>
+            <tr><td>Water Temperature</td><td>${method["Water Temperature"]}°C</td></tr>
+            <tr><td>Blooming Time</td><td>${method["Blooming Time"]}</td></tr>
+            <tr><td>Coffee</td><td>${method["Coffee (g)"]}g</td></tr>
+            <tr><td>Water</td><td>${method["Water (ml)"]}ml</td></tr>
+            <tr class="instructions-row"><td>Instructions</td><td>${method.Instructions}</td></tr>
+          </table>
         `;
-        document.getElementById("methodDetails").innerHTML = methodDetails;
-
-        // Reset grinder selection on method change
-        const grinderSelect = document.getElementById("grinder-select");
-        grinderSelect.value = "default";
+        document.getElementById("grinder-select").value = "default";
         updateGrindSize();
       }
 
       function updateGrindSize() {
-        const grinderSelect = document.getElementById("grinder-select");
         const grindSizeValue = document.getElementById("grind-size-value");
         if (!grindSizeValue || !currentMethod) return;
-        const selectedGrinder = grinderSelect.value;
-        const grinderSettings = {
+        const selectedGrinder = document.getElementById("grinder-select").value;
+        const settings = {
           df54: currentMethod["Grinder Settings"]?.df54 || "Unavailable",
           "chestnut-c2": currentMethod["Grinder Settings"]?.["chestnut-c2"] || "Unavailable",
         };
-        grindSizeValue.textContent = grinderSettings[selectedGrinder] || currentMethod["Grind Size"];
+        grindSizeValue.textContent = settings[selectedGrinder] || currentMethod["Grind Size"];
       }
 
-      // Attach grinder listener once
       document.getElementById("grinder-select").addEventListener("change", updateGrindSize);
 
       function renderStars(rating) {
-        const full = '★';
-        const empty = '☆';
-        let stars = '';
-        for (let i = 1; i <= 5; i++) {
-          stars += i <= Math.round(rating) ? full : empty;
-        }
+        let stars = "";
+        for (let i = 1; i <= 5; i++) stars += i <= Math.round(rating) ? "★" : "☆";
         return stars;
       }
 
       function displayAverageRating(bean) {
-        const ratingDiv = document.getElementById('ratingDisplay');
         const rating = bean.AverageRating || 0;
         const count = bean.RatingCount || 0;
-        ratingDiv.innerHTML = renderStars(rating) + ` (${rating.toFixed(1)} / ${count})`;
+        document.getElementById("ratingDisplay").innerHTML =
+          `${renderStars(rating)} ${rating.toFixed(1)} &middot; ${count} rating${count !== 1 ? "s" : ""}`;
       }
 
       function setupRatingWidget(bean) {
-        const widget = document.getElementById('ratingWidget');
-        widget.innerHTML = '';
+        const widget = document.getElementById("ratingWidget");
+        widget.innerHTML = "";
         for (let i = 1; i <= 5; i++) {
-          const span = document.createElement('span');
-          span.classList.add('star');
-          span.innerHTML = '\u2606';
+          const span = document.createElement("span");
+          span.classList.add("star");
+          span.innerHTML = "☆";
           span.dataset.value = i;
-          span.addEventListener('click', () => handleRating(bean, i));
+          span.addEventListener("click", () => handleRating(bean, i));
           widget.appendChild(span);
         }
         const saved = parseInt(localStorage.getItem(`rating_${bean.Bean}`), 10);
@@ -224,9 +146,8 @@
       }
 
       function highlightWidget(value) {
-        const stars = document.querySelectorAll('#ratingWidget .star');
-        stars.forEach((star, idx) => {
-          star.innerHTML = idx < value ? '\u2605' : '\u2606';
+        document.querySelectorAll("#ratingWidget .star").forEach((star, idx) => {
+          star.innerHTML = idx < value ? "★" : "☆";
         });
       }
 
@@ -240,8 +161,10 @@
       }
 
       function saveRatingData(bean) {
-        const data = { average: bean.AverageRating || 0, count: bean.RatingCount || 0 };
-        localStorage.setItem(`ratingData_${bean.Bean}`, JSON.stringify(data));
+        localStorage.setItem(`ratingData_${bean.Bean}`, JSON.stringify({
+          average: bean.AverageRating || 0,
+          count: bean.RatingCount || 0,
+        }));
       }
 
       function handleRating(bean, value) {
@@ -265,7 +188,6 @@
         highlightWidget(value);
         displayAverageRating(bean);
       }
-
     </script>
   </body>
 </html>
